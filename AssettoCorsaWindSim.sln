@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assettocorsasharedmemory", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACConsoleTest", "ACConsoleTest\ACConsoleTest.csproj", "{C2A8EE27-8189-4F39-9F13-09223C0C0456}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoWindController", "ArduinoWindController\ArduinoWindController.csproj", "{1187436D-A225-4A42-9332-057DA54A49E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssettoCorsaWindSimController", "AssettoCorsaWindSimController\AssettoCorsaWindSimController.csproj", "{45A06665-1D93-4E44-AB2F-BD81E8F570FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +26,9 @@ Global
 		{C2A8EE27-8189-4F39-9F13-09223C0C0456}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2A8EE27-8189-4F39-9F13-09223C0C0456}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2A8EE27-8189-4F39-9F13-09223C0C0456}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1187436D-A225-4A42-9332-057DA54A49E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1187436D-A225-4A42-9332-057DA54A49E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1187436D-A225-4A42-9332-057DA54A49E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1187436D-A225-4A42-9332-057DA54A49E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45A06665-1D93-4E44-AB2F-BD81E8F570FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A06665-1D93-4E44-AB2F-BD81E8F570FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A06665-1D93-4E44-AB2F-BD81E8F570FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A06665-1D93-4E44-AB2F-BD81E8F570FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

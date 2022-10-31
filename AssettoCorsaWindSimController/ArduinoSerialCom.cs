@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO.Ports;
 
-namespace ArduinoWindController;
+namespace AssettoCorsaWindSim;
 public class ArduinoSerialCom : IDisposable
 {
     public enum ReturnCode {
@@ -89,48 +89,8 @@ public class ArduinoSerialCom : IDisposable
     // - true : ventilator control active, turned on
     // - false : ventilator turned off
     public void SetVent1Enable(bool enabled) {
-        
-    }
-
-    public void SetVent2Enable(bool enabled) {
-
-    }
-
-    // ANGLE :
-    // From -180.00deg (0x0000, 0) to 180.00deg (0x8CA0, 36000)
-    // 0.00deg is 0x4650, 18000
-    public void SetVent1Angle(UInt16 angle) {
-
-    }
-
-    public void SetVent2Angle(UInt16 angle) {
-        
-    }
-
-    // MAXSPEED :
-    // From 10kmh (0x64, 100) to 500kmh (0x1388, 5000)
-    public void SetVent1MaxSpeed(UInt16 maxSpeed) {
-
-    }
-
-    public void SetVent2MaxSpeed(UInt16 maxSpeed) {
-        
-    }
-
-    // GAMMA :
-    // From 0.001 (0x1, 1) to 9.999 (0x270F, 9999)
-    public void SetVent1Gamma(UInt16 gamma) {
-        
-    }
-
-    public void SetVent2Gamma(UInt16 gamma) {
-        
-    }
-    
-    public void SetBool(bool enabler)
-    {
-        Console.WriteLine(enabler ? "Bool Enable" : "Bool Disable");
-        string msg_to_send = "=BE" + (enabler ? "1" : "0") + "\r";
+        Console.WriteLine(enabled ? "Vent1 Enable" : "Vent1 Disable");
+        string msg_to_send = "=AE" + (enabled ? "1" : "0") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 5, out char[] result, 20, '\r');
         if (retval == ReturnCode.OK)
@@ -144,16 +104,39 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine((enabler ? "Bool Enable" : "Bool Disable")+" - exception : " + ex.ToString());
+        Console.WriteLine((enabled ? "Bool Enable" : "Bool Disable")+" - exception : " + ex.ToString());
         throw ex;
     }
 
-    public void WriteValue(UInt16 value)
-    {
-        Console.WriteLine("WriteValue " + value);
-        string msg_to_send = "=WR" + value.ToString("X4") + "\r";
+    public void SetVent2Enable(bool enabled) {
+        Console.WriteLine(enabled ? "Vent2 Enable" : "Vent2 Disable");
+        string msg_to_send = "=BE" + (enabled ? "1" : "0") + "\r";
 
-        ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 8, out char[] result, 20, '\r');
+        ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 5, out char[] result, 20, '\r');
+        if (retval == ReturnCode.OK)
+        {
+            string tempstr = new(result);
+            retval = ProcessAnswer(msg_to_send, tempstr, 1);
+            if (retval == ReturnCode.OK)
+            {
+                return;
+            }
+        }
+
+        Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
+        Console.WriteLine((enabled ? "Bool Enable" : "Bool Disable")+" - exception : " + ex.ToString());
+        throw ex;
+    }
+
+    // Power :
+    // - 0 is 0% PWM
+    // - 100 (0x64) is 100%
+    // If value > 100, then 100 by default
+    public void SetVent1Power(uint value) {
+        Console.WriteLine("Vent1 set Power " + value);
+        string msg_to_send = "=AP" + value.ToString("X2") + "\r";
+
+        ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 6, out char[] result, 20, '\r');
         if (retval == ReturnCode.OK)
         {
             string tempstr = new(result);
@@ -165,7 +148,27 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("WriteValue " + value + " - exception : " + ex.ToString());
+        Console.WriteLine("Vent1 set Power " + value + " - exception : " + ex.ToString());
+        throw ex;
+    }
+
+    public void SetVent2Power(uint value) {
+        Console.WriteLine("Vent2 set Power " + value);
+        string msg_to_send = "=BP" + value.ToString("X2") + "\r";
+
+        ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 6, out char[] result, 20, '\r');
+        if (retval == ReturnCode.OK)
+        {
+            string tempstr = new(result);
+            retval = ProcessAnswer(msg_to_send, tempstr, 0);
+            if (retval == ReturnCode.OK)
+            {
+                return;
+            }
+        }
+
+        Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
+        Console.WriteLine("Vent2 set Power " + value + " - exception : " + ex.ToString());
         throw ex;
     }
 
