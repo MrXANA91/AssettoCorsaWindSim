@@ -86,10 +86,10 @@ public class ArduinoSerialCom : IDisposable
     }
 
     // ENABLE :
-    // - true : ventilator control active, turned on
-    // - false : ventilator turned off
-    public void SetVent1Enable(bool enabled) {
-        Console.WriteLine(enabled ? "Vent1 Enable" : "Vent1 Disable");
+    // - true : Fan control active, turned on
+    // - false : Fan turned off
+    public void SetFanAEnable(bool enabled) {
+        Console.WriteLine(enabled ? "FanA Enable" : "FanA Disable");
         string msg_to_send = "=AE" + (enabled ? "1" : "0") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 5, out char[] result, 20, '\r');
@@ -104,12 +104,12 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine((enabled ? "Bool Enable" : "Bool Disable")+" - exception : " + ex.ToString());
+        Console.WriteLine((enabled ? "FanA Enable" : "FanA Disable")+" - exception : " + ex.ToString());
         throw ex;
     }
 
-    public void SetVent2Enable(bool enabled) {
-        Console.WriteLine(enabled ? "Vent2 Enable" : "Vent2 Disable");
+    public void SetFanBEnable(bool enabled) {
+        Console.WriteLine(enabled ? "FanB Enable" : "FanB Disable");
         string msg_to_send = "=BE" + (enabled ? "1" : "0") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 5, out char[] result, 20, '\r');
@@ -124,7 +124,7 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine((enabled ? "Bool Enable" : "Bool Disable")+" - exception : " + ex.ToString());
+        Console.WriteLine((enabled ? "FanB Enable" : "FanB Disable")+" - exception : " + ex.ToString());
         throw ex;
     }
 
@@ -132,8 +132,8 @@ public class ArduinoSerialCom : IDisposable
     // - 0 is 0% PWM
     // - 100 (0x64) is 100%
     // If value > 100, then 100 by default
-    public void SetVent1Power(uint value) {
-        Console.WriteLine("Vent1 set Power " + value);
+    public void SetFanAPower(uint value) {
+        Console.WriteLine("FanA set Power " + value);
         string msg_to_send = "=AP" + value.ToString("X2") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 6, out char[] result, 20, '\r');
@@ -148,12 +148,12 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("Vent1 set Power " + value + " - exception : " + ex.ToString());
+        Console.WriteLine("FanA set Power " + value + " - exception : " + ex.ToString());
         throw ex;
     }
 
-    public void SetVent2Power(uint value) {
-        Console.WriteLine("Vent2 set Power " + value);
+    public void SetFanBPower(uint value) {
+        Console.WriteLine("FanB set Power " + value);
         string msg_to_send = "=BP" + value.ToString("X2") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 6, out char[] result, 20, '\r');
@@ -168,7 +168,55 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("Vent2 set Power " + value + " - exception : " + ex.ToString());
+        Console.WriteLine("FanB set Power " + value + " - exception : " + ex.ToString());
+        throw ex;
+    }
+
+    public UInt16 GetFanAInfos()
+    {
+        string msg_to_send = "=AG\r";
+
+        ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 4, out char[] result, 20, '\r');
+        if (retval == ReturnCode.OK)
+        {
+            string tempstr = new(result);
+            retval = ProcessAnswer(msg_to_send, tempstr, 0);
+            int startIndexReceived = tempstr.IndexOf('>');
+            if (retval == ReturnCode.OK)
+            {
+                string tempstr2 = tempstr.Substring(startIndexReceived + 3, 4);
+                UInt16 ret_result = Convert.ToUInt16(tempstr2, 16);
+                Console.WriteLine("GetFanAInfos : " + ret_result.ToString("X4"));
+                return ret_result;
+            }
+        }
+
+        Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
+        Console.WriteLine("GetFanAInfos - exception : " + ex.ToString());
+        throw ex;
+    }
+
+    public UInt16 GetFanBInfos()
+    {
+        string msg_to_send = "=BG\r";
+
+        ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 4, out char[] result, 20, '\r');
+        if (retval == ReturnCode.OK)
+        {
+            string tempstr = new(result);
+            retval = ProcessAnswer(msg_to_send, tempstr, 0);
+            int startIndexReceived = tempstr.IndexOf('>');
+            if (retval == ReturnCode.OK)
+            {
+                string tempstr2 = tempstr.Substring(startIndexReceived + 3, 4);
+                UInt16 ret_result = Convert.ToUInt16(tempstr2, 16);
+                Console.WriteLine("GetFanBInfos : " + ret_result.ToString("X4"));
+                return ret_result;
+            }
+        }
+
+        Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
+        Console.WriteLine("GetFanBInfos - exception : " + ex.ToString());
         throw ex;
     }
 
@@ -186,7 +234,7 @@ public class ArduinoSerialCom : IDisposable
             {
                 string tempstr2 = tempstr.Substring(startIndexReceived + 3, 4);
                 UInt16 ret_result = Convert.ToUInt16(tempstr2, 16);
-                Console.WriteLine("GetFWVersion : " + ret_result);
+                Console.WriteLine("GetFWVersion : " + ret_result.ToString("X4"));
                 return ret_result;
             }
         }
