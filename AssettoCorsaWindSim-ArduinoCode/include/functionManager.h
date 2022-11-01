@@ -30,6 +30,8 @@ enum {
     FanBPowerNotEnoughArgument,     // ER0C
     FanBPowerNotAsciiArgument,      // ER0D
     FanBPowerWrongArgument,         // ER0E
+    FanAGetInfosOK,
+    FanBGetInfosOK,
     SoftwareError = 200             // ER0F
 };                  // unknown error : ER10
 
@@ -40,8 +42,10 @@ enum {
 #define FctReset        (('W'<<8)|'#')
 
 #define FctFanAEnable   (('A'<<8)|'E')
-#define FctFanBEnable   (('B'<<8)|'E')
 #define FctFanAPower    (('A'<<8)|'P')
+#define FctFanAGetInfos (('A'<<8)|'G')
+#define FctFanBEnable   (('B'<<8)|'E')
 #define FctFanBPower    (('B'<<8)|'P')
+#define FctFanBGetInfos (('B'<<8)|'G')
 
 #endif /* _FUNCTION_MANAGER_H */

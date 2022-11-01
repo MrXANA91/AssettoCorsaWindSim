@@ -2,6 +2,7 @@
 #include "communication.h"
 #include "functionManager.h"
 #include "conv_ascii.h"
+#include "avr/wdt.h"
 
 typeSTATUS STSbits;
 
@@ -34,4 +35,9 @@ void loop() {
   comm_get_usb_data();
   comm_process_usb_data();
   comm_flush_usb_data();
+
+  if (flag_noreboot == 0) {
+    wdt_enable(WDTO_15MS);
+    while(1);
+  }
 }

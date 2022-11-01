@@ -69,8 +69,9 @@ void LongToDecAscii(int32_t i, uint8_t* BCD)
 		BCD[0]='-';
 		i = -i;
 	}
-	else
+	else {
 		BCD[0]=' ';
+	}
     
     uint32_t temp = (uint32_t) i;
 	int k = 10;
@@ -191,11 +192,14 @@ void ClearZeros(uint8_t* TXT, int TAILLE)
 int OneAsciiToHex(uint8_t* STR, unsigned int* RES)
 {
 	#ifdef	NotCaseSensitive
-		if (islower(STR[0])) STR[0] -= 0x20;
+		if (islower(STR[0])) {
+			STR[0] -= 0x20;
+		}
 	#endif
 
-	if ((isxdigit(STR[0])) == 0)
+	if ((isxdigit(STR[0])) == 0) {
 		return(FALSE);
+	}
 
 	*RES  = AsciiToHex( STR[0] );
 	return(TRUE);
@@ -210,15 +214,20 @@ int TwoAsciiToHex(uint8_t* STR, unsigned int* RES)
 	int i;
 
 	#ifdef	NotCaseSensitive
-		if (islower(STR[0])) STR[0] -= 0x20;
-		if (islower(STR[1])) STR[1] -= 0x20;
+		if (islower(STR[0])) {
+			STR[0] -= 0x20;
+		}
+		if (islower(STR[1])) {
+			STR[1] -= 0x20;
+		}
 	#endif
 
 	i =2;
 	i -= isxdigit(STR[0]);
 	i -= isxdigit(STR[1]);
-	if (i)
+	if (i>0) {
 		return(FALSE);
+	}
 
 	*RES  = AsciiToHex( STR[0] );
 	*RES  = (*RES)<<4;
@@ -235,9 +244,11 @@ int FourAsciiToHex(uint8_t* STR, unsigned int* RES)
 	int i=4;
 
 	#ifdef	NotCaseSensitive
-		while(i)
-			if (islower(STR[--i]))
+		while(i) {
+			if (islower(STR[--i])) {
 				STR[i] -= 0x20;
+			}
+		}
 		i = 4;
 	#endif
 
@@ -245,8 +256,9 @@ int FourAsciiToHex(uint8_t* STR, unsigned int* RES)
 	i -= isxdigit(STR[1]);
 	i -= isxdigit(STR[2]);
 	i -= isxdigit(STR[3]);
-	if (i)
+	if (i>0) {
 		return(FALSE);
+	}
 
 	*RES  = AsciiToHex( STR[0] );
 	*RES  = (*RES)<<4;
@@ -268,9 +280,11 @@ int EightAsciiToHex(uint8_t* STR, int32_t* RES)
 	int i=8;
 
 	#ifdef	NotCaseSensitive
-		while(i)
-			if (islower(STR[--i]))
+		while(i) {
+			if (islower(STR[--i])) {
 				STR[i] -= 0x20;
+			}
+		}
 		i = 8;
 	#endif
 
@@ -278,8 +292,9 @@ int EightAsciiToHex(uint8_t* STR, int32_t* RES)
     for (k=0;k<8;k++) {
         i -= isxdigit(STR[k]);     
 	}   
-	if (i)
+	if (i>0) {
 		return(FALSE);
+	}
    
   	*RES  = AsciiToHex( STR[0] );
     for ( i=1 ; i<8 ; i++)

@@ -1,6 +1,7 @@
 #include "common.h"
 #include "functionManager.h"
 #include "conv_ascii.h"
+#include "fancontroller.h"
 
 #define ComEndCar1 '\r'
 #define ComEndCar2 '\n'
@@ -37,8 +38,7 @@ uint16_t FunctionProceed(uint8_t* STRINGCHAR, uint8_t* SENDCHAR, int16_t MssgLen
             } else if (OneAsciiToHex(Mssg, &arg) == false) {
                 MssgCode = FanAEnableNotAsciiArgument;
             } else {
-                // MssgCode = (FanAEnable(arg, STSbits) ? FanAEnableOK : FanAEnableIsKO);
-                MssgCode = (false ? FanAEnableOK : FanAEnableIsKO);
+                MssgCode = (FanAEnable(arg, STSbits) ? FanAEnableOK : FanAEnableIsKO);
             }
             break;
         case FctFanBEnable:
@@ -47,8 +47,7 @@ uint16_t FunctionProceed(uint8_t* STRINGCHAR, uint8_t* SENDCHAR, int16_t MssgLen
             } else if (OneAsciiToHex(Mssg, &arg) == false) {
                 MssgCode = FanBEnableNotAsciiArgument;
             } else {
-                // MssgCode = (FanBEnable(arg, STSbits) ? FanAEnableOK : FanAEnableIsKO);
-                MssgCode = (false ? FanAEnableOK : FanAEnableIsKO);
+                MssgCode = (FanBEnable(arg, STSbits) ? FanBEnableOK : FanBEnableIsKO);
             }
             break;
         case FctFanAPower:
@@ -56,8 +55,7 @@ uint16_t FunctionProceed(uint8_t* STRINGCHAR, uint8_t* SENDCHAR, int16_t MssgLen
                 MssgCode = FanAPowerNotEnoughArgument;
             } else if (TwoAsciiToHex(Mssg, &arg) == false) {
                 MssgCode = FanAPowerNotAsciiArgument;
-            // } else if (FanAPower(arg, STSbits) == false) {
-            } else if (false == false) {
+            } else if (FanAPower(arg, STSbits) == false) {
                 MssgCode = FanAPowerWrongArgument;
             } else {
                 MssgCode = FanAPowerOK;
@@ -68,12 +66,17 @@ uint16_t FunctionProceed(uint8_t* STRINGCHAR, uint8_t* SENDCHAR, int16_t MssgLen
                 MssgCode = FanBPowerNotEnoughArgument;
             } else if (TwoAsciiToHex(Mssg, &arg) == false) {
                 MssgCode = FanBPowerNotAsciiArgument;
-            // } else if (FanBPower(arg, STSbits) == false) {
-            } else if (false == false) {
+            } else if (FanBPower(arg, STSbits) == false) {
                 MssgCode = FanBPowerWrongArgument;
             } else {
                 MssgCode = FanBPowerOK;
             }
+            break;
+        case FctFanAGetInfos:
+            MssgCode = FanAGetInfosOK;
+            break;
+        case FctFanBGetInfos:
+            MssgCode = FanBGetInfosOK;
             break;
         case FctGetVersion:
             MssgCode = GetVersionIsOK;
@@ -105,16 +108,22 @@ uint16_t SetReponse(uint8_t NumeroReponse, uint8_t reponse[], uint16_t arg, type
 
     switch (NumeroReponse) {
         case FanAEnableOK:
-            // TODO
+            k += Fill1Car(FctFanAEnable, ToAscii(STS->FANA_enable), &reponse[k]);
             break;
         case FanBEnableOK:
-            // TODO
+            k += Fill1Car(FctFanBEnable, ToAscii(STS->FANB_enable), &reponse[k]);
             break;
         case FanAPowerOK:
-            // TODO
+            k += Fill2ASCII(FctFanAPower, (uint8_t)(STS->FANA_PWM), &reponse[k]);
             break;
         case FanBPowerOK:
-            // TODO
+            k += Fill2ASCII(FctFanBPower, (uint8_t)(STS->FANB_PWM), &reponse[k]);
+            break;
+        case FanAGetInfosOK:
+            k += Fill4ASCII(FctFanAGetInfos, (uint16_t)(((STS->FANA_enable)<<8)|(STS->FANA_PWM)), &reponse[k]);
+            break;
+        case FanBGetInfosOK:
+            k += Fill4ASCII(FctFanBGetInfos, (uint16_t)(((STS->FANB_enable)<<8)|(STS->FANB_PWM)), &reponse[k]);
             break;
         case GetVersionIsOK:
             k += Fill4ASCII(FctGetVersion, arg, &reponse[k]);
