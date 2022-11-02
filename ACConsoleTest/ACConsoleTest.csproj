@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\assettocorsasharedmemory\assettocorsasharedmemory.csproj" />
+    <ProjectReference Include="..\AssettoCorsaWindSimController\AssettoCorsaWindSimController.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
