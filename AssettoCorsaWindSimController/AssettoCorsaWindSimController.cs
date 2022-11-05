@@ -8,6 +8,8 @@ public class AssettoCorsaWindSimController : IDisposable
 {
     public static int NUMBER_OF_AVAILABLE_VENTILATORS = 2;  // prévoir de récupérer l'info depuis l'arduino
 
+    public FanParameters[] fansParams;
+
     private ArduinoSerialCom fansController;
     private Timer fansControllerTimer;
 
@@ -27,9 +29,12 @@ public class AssettoCorsaWindSimController : IDisposable
         fansControllerTimer.Elapsed += fansControllerTimer_Elapsed;
 
         updateFansPower = false;
-
-        // Objets representants les ventilateurs, avec les paramètres softs pour le calcul (angle, maxSpeed, gamma)
-        // ainsi que leurs attributs ENABLE et POWER du hardware
+        
+        // Here, we know there will be 2 fans.
+        // TODO : prévoir de récupérer les infos depuis Arduino et fichier de config ?
+        fansParams = new FanParameters[2];
+        fansParams[0] = new FanParameters(0f, 350f, 1f);
+        fansParams[1] = new FanParameters(0f, 350f, 1f);
     }
 
     ~AssettoCorsaWindSimController() {
@@ -168,25 +173,22 @@ public class AssettoCorsaWindSimController : IDisposable
 
     void fansController_Update(float speedKmh, float localAngularVelocityY) {
         if (fansController.IsConnected && updateFansPower) {
-            // CALCULATE AND SEND INSTRUCTION
             try {
                 lock(fansController) {
-                    fansController.SetFanAPower(Convert.ToUInt32((speedKmh/350f)*100));
+                    fansController.SetFanAPower(fansParams[0].CalculatePower(speedKmh, localAngularVelocityY));
                 }
             }
             catch (Exception ex) {
                 Console.WriteLine("Could not send Power command for Fan A : "+ex.ToString());
             }
-            /*
             try {
                 lock(fansController) {
-                    fansController.SetFanBPower(Convert.ToUInt32((speedKmh/350f)*100));
+                    fansController.SetFanBPower(fansParams[1].CalculatePower(speedKmh, localAngularVelocityY));
                 }
             }
             catch (Exception ex) {
                 Console.WriteLine("Could not send Power command for Fan B : "+ex.ToString());
             }
-            */
         }
     }
 }
