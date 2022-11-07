@@ -1,6 +1,7 @@
 #include "common.h"
 #include "communication.h"
 #include "functionManager.h"
+#include "fancontroller.h"
 #include "conv_ascii.h"
 #include "avr/wdt.h"
 
@@ -16,19 +17,11 @@ uint8_t frame_started;
 uint8_t frame_found;
 
 void setup() {
-  STSbits.FANA_enable = false;
-  STSbits.FANB_enable = false;
-  STSbits.FANA_PWM = 0;
-  STSbits.FANB_PWM = 0;
-
   flag_noreboot = 1;
 
-  MAINBUFFERindex = 0;
-  SENDBUFFERindex = 0;
-  frame_found = 0;
-  frame_started = 0;
+  FansInit(&STSbits);
 
-  Serial.begin(115200);
+  commInit();
 }
 
 void loop() {

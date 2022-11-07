@@ -11,6 +11,19 @@ extern int16_t SENDBUFFERindex;
 extern uint8_t frame_started;
 extern uint8_t frame_found;
 
+void commInit() {
+    MAINBUFFERindex = 0;
+    SENDBUFFERindex = 0;
+    frame_found = 0;
+    frame_started = 0;
+
+    commHardwareInit();
+}
+
+void commHardwareInit() {
+    Serial.begin(115200);
+}
+
 void comm_get_usb_data(void) {
     while (Serial.available() > 0) {
         uint8_t char_received = Serial.read();

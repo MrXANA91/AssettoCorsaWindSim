@@ -5,6 +5,9 @@
 #define ComEndCar1 '\r'
 #define ComEndCar2 '\n'
 
+void commInit();
+void commHardwareInit();
+
 void comm_get_usb_data(void);
 void comm_process_usb_data(void);
 void comm_flush_usb_data(void);
