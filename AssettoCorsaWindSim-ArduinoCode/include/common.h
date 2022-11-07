@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "software_info.h"
+#include "hardware_info.h"
 
 #define STRINGCHARlength 200
 
