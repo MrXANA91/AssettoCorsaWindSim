@@ -256,8 +256,7 @@ public class ArduinoSerialCom : IDisposable
             retval = ProcessAnswer(msg_to_send, tempstr, 0);
             if (retval == ReturnCode.OK)
             {
-                // Pas de vérif sur le 'FFFFFFFF' de ">W#FFFFFFFF\r" car vérif sur ">W#"
-                // et il n'y a qu'un seul message qui commence par ">W#"
+                // No check on the 'FFFFFFFF' from ">W#FFFFFFFF\r"
                 return;
             }
         }
@@ -332,14 +331,14 @@ public class ArduinoSerialCom : IDisposable
     private ReturnCode ProcessAnswer(string msg_sent, string msg_received, int offset_arg_size)
     {
         ReturnCode retval = ReturnCode.UnknownError;
-        // --- Récupération de l'index du caractère de départ : '=' ---
+        // --- Fetch start character index : '=' ---
         int startIndexSent = msg_sent.IndexOf('=');
         // TODO ReturnCode.WrongInputCommand
         if (startIndexSent == -1)
         {
             return ReturnCode.AnswerIsCorrupted;
         }
-        // --- Récupération de l'index du caractère de départ : '>' ---
+        // --- Fetch start character index : '>' ---
         int startIndexReceived = msg_received.IndexOf('>');
         if (startIndexReceived == -1)
         {

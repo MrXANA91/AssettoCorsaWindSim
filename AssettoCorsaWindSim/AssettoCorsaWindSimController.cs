@@ -6,9 +6,7 @@ namespace AssettoCorsaWindSim;
 
 public class AssettoCorsaWindSimController : IDisposable
 {
-    public static int NUMBER_OF_AVAILABLE_VENTILATORS = 2;  // prévoir de récupérer l'info depuis l'arduino
-
-    public FanParameters[] fansParams;
+    public List<FanParameters> fansParams;
 
     private ArduinoSerialCom fansController;
     private Timer fansControllerTimer;
@@ -29,12 +27,10 @@ public class AssettoCorsaWindSimController : IDisposable
         fansControllerTimer.Elapsed += fansControllerTimer_Elapsed;
 
         updateFansPower = false;
-        
-        // Here, we know there will be 2 fans.
-        // TODO : prévoir de récupérer les infos depuis Arduino et fichier de config ?
-        fansParams = new FanParameters[2];
-        fansParams[0] = new FanParameters(0f, 350f, 1f);
-        fansParams[1] = new FanParameters(0f, 350f, 1f);
+
+        fansParams = new List<FanParameters>();
+
+        fansControllerTimer.Start();
     }
 
     ~AssettoCorsaWindSimController() {
@@ -43,23 +39,13 @@ public class AssettoCorsaWindSimController : IDisposable
 
     public void Dispose() {
         ac.Stop();
-        fansController.Dispose();
-    }
-
-    public void Start() {
-        ac.Start();
-    }
-
-    public void Stop() {
-        ac.Stop();
-        
         fansController_StopAndDisconnect();
     }
 
     void ac_PhysicsInfoUpdated(object? sender, PhysicsEventArgs e) {
         float[] localangularvelocity = e.Physics.LocalAngularVelocity;
         
-        // Données importantes
+        // Important data
         float speedKmh = e.Physics.SpeedKmh;
         float localangularvelocityY = localangularvelocity[1];
 
@@ -73,47 +59,16 @@ public class AssettoCorsaWindSimController : IDisposable
             default:
                 Console.WriteLine("Assetto Corsa is not live.");
                 updateFansPower = false;
-                fansController_StopAndDisconnect();
                 break;
             case AC_STATUS.AC_PAUSE:
                 Console.WriteLine("Assetto Corsa is paused!");
                 updateFansPower = false;
-                if (fansController.IsConnected) {
-                    try {
-                        lock(fansController) {
-                            fansController.SetFanAEnable(false);
-                        }
-                    } catch (Exception ex) {
-                        Console.WriteLine("Stopping Fan A exception : "+ex.ToString());
-                    }
-                    try {
-                        lock(fansController) {
-                            fansController.SetFanBEnable(false);
-                        }
-                    } catch (Exception ex) {
-                        Console.WriteLine("Stopping Fan B exception : "+ex.ToString());
-                    }
-                }
+                fansController_deactivate();
                 break;
             case AC_STATUS.AC_LIVE:
                 Console.WriteLine("Assetto Corsa is started!");
                 updateFansPower = true;
-                if (fansController.IsConnected) {
-                    try {
-                        lock(fansController) {
-                            fansController.SetFanAEnable(true);
-                        }
-                    } catch (Exception ex) {
-                        Console.WriteLine("Enabling Fan A exception : "+ex.ToString());
-                    }
-                    try {
-                        lock(fansController) {
-                            fansController.SetFanBEnable(true);
-                        }
-                    } catch (Exception ex) {
-                        Console.WriteLine("Enabling Fan B exception : "+ex.ToString());
-                    }
-                }
+                fansController_activate();
                 fansControllerTimer.Start();
                 break;
         }
@@ -128,21 +83,14 @@ public class AssettoCorsaWindSimController : IDisposable
                     _connected = fansController.Connect(comport, 115200);
                 }
                 if (_connected) {
-                    try {
-                        lock(fansController) {
-                            fansController.SetFanAEnable(true);
-                        }
-                    } catch (Exception ex) {
-                        Console.WriteLine("Stopping Fan A exception : "+ex.ToString());
-                    }
-                    try {
-                        lock(fansController) {
-                            fansController.SetFanBEnable(true);
-                        }
-                    } catch (Exception ex) {
-                        Console.WriteLine("Stopping Fan B exception : "+ex.ToString());
-                    }
-                    break;
+                    // Here, we know there will be 2 fans.
+                    // TODO : plan to fetch infos from Arduino
+                    fansParams.Add(new FanParameters(0f, 350f, 1f));
+                    fansParams.Add(new FanParameters(0f, 350f, 1f));
+
+                    fansController_activate();
+
+                    ac.Start();
                 }
             }
         }
@@ -150,6 +98,32 @@ public class AssettoCorsaWindSimController : IDisposable
 
     void fansController_StopAndDisconnect() {
         fansControllerTimer.Stop();
+        fansController_deactivate();
+        lock(fansController) {
+            fansController.Disconnect();
+        }
+    }
+
+    void fansController_activate() {
+        if (fansController.IsConnected) {
+            try {
+                lock(fansController) {
+                    fansController.SetFanAEnable(true);
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("Enabling Fan A exception : "+ex.ToString());
+            }
+            try {
+                lock(fansController) {
+                    fansController.SetFanBEnable(true);
+                }
+            } catch (Exception ex) {
+                Console.WriteLine("Enabling Fan B exception : "+ex.ToString());
+            }
+        }
+    }
+
+    void fansController_deactivate() {
         if (fansController.IsConnected) {
             try {
                 lock(fansController) {
@@ -165,9 +139,6 @@ public class AssettoCorsaWindSimController : IDisposable
             } catch (Exception ex) {
                 Console.WriteLine("Stopping Fan B exception : "+ex.ToString());
             }
-        }
-        lock(fansController) {
-            fansController.Disconnect();
         }
     }
 
