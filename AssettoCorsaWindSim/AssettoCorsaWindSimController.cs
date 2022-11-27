@@ -1,12 +1,13 @@
 using System.Timers;
 using Timer = System.Timers.Timer;
 using assettocorsasharedmemory;
+using System.Collections.ObjectModel;
 
 namespace AssettoCorsaWindSim;
 
 public class AssettoCorsaWindSimController : IDisposable
 {
-    public List<FanParameters> fansParams;
+    private List<FanParameters> fansParams;
 
     private ArduinoSerialCom fansController;
     private Timer fansControllerTimer;
@@ -42,7 +43,11 @@ public class AssettoCorsaWindSimController : IDisposable
         fansController_StopAndDisconnect();
     }
 
-    void ac_PhysicsInfoUpdated(object? sender, PhysicsEventArgs e) {
+    public ReadOnlyCollection<FanParameters> GetFanParametersList() {
+        return fansParams.AsReadOnly();
+    }
+
+    private void ac_PhysicsInfoUpdated(object? sender, PhysicsEventArgs e) {
         float[] localangularvelocity = e.Physics.LocalAngularVelocity;
         
         // Important data
@@ -52,7 +57,7 @@ public class AssettoCorsaWindSimController : IDisposable
         fansController_Update(speedKmh, localangularvelocityY);
     }
 
-    void ac_GameStatusUpdated(object sender, GameStatusEventArgs e) {
+    private void ac_GameStatusUpdated(object sender, GameStatusEventArgs e) {
         switch(e.GameStatus) {
             case AC_STATUS.AC_OFF:
             case AC_STATUS.AC_REPLAY:
@@ -74,7 +79,7 @@ public class AssettoCorsaWindSimController : IDisposable
         }
     }
 
-    void fansControllerTimer_Elapsed(object? sender, ElapsedEventArgs e ) {
+    private void fansControllerTimer_Elapsed(object? sender, ElapsedEventArgs e ) {
         if (!fansController.IsConnected) {
             Console.WriteLine("Trying to connect...");
             foreach (string comport in fansController.ComportList) {
@@ -96,7 +101,7 @@ public class AssettoCorsaWindSimController : IDisposable
         }
     }
 
-    void fansController_StopAndDisconnect() {
+    private void fansController_StopAndDisconnect() {
         fansControllerTimer.Stop();
         fansController_deactivate();
         lock(fansController) {
@@ -104,7 +109,7 @@ public class AssettoCorsaWindSimController : IDisposable
         }
     }
 
-    void fansController_activate() {
+    private void fansController_activate() {
         if (fansController.IsConnected) {
             try {
                 lock(fansController) {
@@ -123,7 +128,7 @@ public class AssettoCorsaWindSimController : IDisposable
         }
     }
 
-    void fansController_deactivate() {
+    private void fansController_deactivate() {
         if (fansController.IsConnected) {
             try {
                 lock(fansController) {
@@ -142,7 +147,7 @@ public class AssettoCorsaWindSimController : IDisposable
         }
     }
 
-    void fansController_Update(float speedKmh, float localAngularVelocityY) {
+    private void fansController_Update(float speedKmh, float localAngularVelocityY) {
         uint fanA_power = fansParams[0].CalculatePower(speedKmh, localAngularVelocityY);
         uint fanB_power = fansParams[1].CalculatePower(speedKmh, localAngularVelocityY);
 
