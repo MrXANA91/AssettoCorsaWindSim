@@ -18,6 +18,18 @@ public class ArduinoSerialCom : IDisposable
         ResetIsKO,
         SoftwareError
     };
+
+    // Debug verbose :
+    // - 0 : only errors
+    public const uint VERBOSE_ERRORS_ONLY = 0;
+    // - 1 : errors + connection/disconnection messages
+    public const uint VERBOSE_IMPORTANT = 1;
+    // - 2 : errors +  connection/disconnection messages + fan activation management
+    public const uint VERBOSE_INFOS = 2;
+    // - 3 : errors +  connection/disconnection messages + fan activation management + fan power management
+    public const uint VERBOSE_ALL = 3;
+
+    public static uint DEBUG_VERBOSE = VERBOSE_IMPORTANT;
     
     public string[] ComportList
     {
@@ -61,7 +73,7 @@ public class ArduinoSerialCom : IDisposable
                 UInt16 ver = GetFWVersion();
                 if (ver > 0)
                 {
-                    Console.WriteLine("Connected device firmware version : " + ver.ToString("X4") + " on " + comport);
+                    if (DEBUG_VERBOSE>=1)  Console.WriteLine("Connected device firmware version : " + ver.ToString("X4") + " on " + comport);
                     return true;
                 }
                 else
@@ -69,8 +81,8 @@ public class ArduinoSerialCom : IDisposable
                     Disconnect();
                 }
             } catch(Exception ex) {
-                Console.WriteLine("Failed to connect : " + comport);
-                Console.WriteLine(ex.ToString());
+                if (DEBUG_VERBOSE>=0) Console.WriteLine("Failed to connect : " + comport);
+                if (DEBUG_VERBOSE>=0) Console.WriteLine(ex.ToString());
             }
         }
 
@@ -89,7 +101,7 @@ public class ArduinoSerialCom : IDisposable
     // - true : Fan control active, turned on
     // - false : Fan turned off
     public void SetFanAEnable(bool enabled) {
-        Console.WriteLine(enabled ? "FanA Enable" : "FanA Disable");
+        if (DEBUG_VERBOSE>=2) Console.WriteLine(enabled ? "FanA Enable" : "FanA Disable");
         string msg_to_send = "=AE" + (enabled ? "1" : "0") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 5, out char[] result, 20, '\r');
@@ -104,12 +116,12 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine((enabled ? "FanA Enable" : "FanA Disable")+" - exception : " + ex.ToString());
+        if (DEBUG_VERBOSE>=0) Console.WriteLine((enabled ? "FanA Enable" : "FanA Disable")+" - exception : " + ex.ToString());
         throw ex;
     }
 
     public void SetFanBEnable(bool enabled) {
-        Console.WriteLine(enabled ? "FanB Enable" : "FanB Disable");
+        if (DEBUG_VERBOSE>=2) Console.WriteLine(enabled ? "FanB Enable" : "FanB Disable");
         string msg_to_send = "=BE" + (enabled ? "1" : "0") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 5, out char[] result, 20, '\r');
@@ -124,7 +136,7 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine((enabled ? "FanB Enable" : "FanB Disable")+" - exception : " + ex.ToString());
+        if (DEBUG_VERBOSE>=0) Console.WriteLine((enabled ? "FanB Enable" : "FanB Disable")+" - exception : " + ex.ToString());
         throw ex;
     }
 
@@ -133,7 +145,7 @@ public class ArduinoSerialCom : IDisposable
     // - 100 (0x64) is 100%
     // If value > 100, then 100 by default
     public void SetFanAPower(uint value) {
-        Console.WriteLine("FanA set Power " + value);
+        if (DEBUG_VERBOSE>=3) Console.WriteLine("FanA set Power " + value);
         string msg_to_send = "=AP" + value.ToString("X2") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 6, out char[] result, 20, '\r');
@@ -148,12 +160,12 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("FanA set Power " + value + " - exception : " + ex.ToString());
+        if (DEBUG_VERBOSE>=0) Console.WriteLine("FanA set Power " + value + " - exception : " + ex.ToString());
         throw ex;
     }
 
     public void SetFanBPower(uint value) {
-        Console.WriteLine("FanB set Power " + value);
+        if (DEBUG_VERBOSE>=3) Console.WriteLine("FanB set Power " + value);
         string msg_to_send = "=BP" + value.ToString("X2") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 6, out char[] result, 20, '\r');
@@ -168,7 +180,7 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("FanB set Power " + value + " - exception : " + ex.ToString());
+        if (DEBUG_VERBOSE>=0) Console.WriteLine("FanB set Power " + value + " - exception : " + ex.ToString());
         throw ex;
     }
 
@@ -186,13 +198,13 @@ public class ArduinoSerialCom : IDisposable
             {
                 string tempstr2 = tempstr.Substring(startIndexReceived + 3, 4);
                 UInt16 ret_result = Convert.ToUInt16(tempstr2, 16);
-                Console.WriteLine("GetFanAInfos : " + ret_result.ToString("X4"));
+                if (DEBUG_VERBOSE>=3) Console.WriteLine("GetFanAInfos : " + ret_result.ToString("X4"));
                 return ret_result;
             }
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("GetFanAInfos - exception : " + ex.ToString());
+        if (DEBUG_VERBOSE>=0) Console.WriteLine("GetFanAInfos - exception : " + ex.ToString());
         throw ex;
     }
 
@@ -210,13 +222,13 @@ public class ArduinoSerialCom : IDisposable
             {
                 string tempstr2 = tempstr.Substring(startIndexReceived + 3, 4);
                 UInt16 ret_result = Convert.ToUInt16(tempstr2, 16);
-                Console.WriteLine("GetFanBInfos : " + ret_result.ToString("X4"));
+                if (DEBUG_VERBOSE>=3) Console.WriteLine("GetFanBInfos : " + ret_result.ToString("X4"));
                 return ret_result;
             }
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("GetFanBInfos - exception : " + ex.ToString());
+        if (DEBUG_VERBOSE>=0) Console.WriteLine("GetFanBInfos - exception : " + ex.ToString());
         throw ex;
     }
 
@@ -234,19 +246,19 @@ public class ArduinoSerialCom : IDisposable
             {
                 string tempstr2 = tempstr.Substring(startIndexReceived + 3, 4);
                 UInt16 ret_result = Convert.ToUInt16(tempstr2, 16);
-                Console.WriteLine("GetFWVersion : " + ret_result.ToString("X4"));
+                if (DEBUG_VERBOSE>=1) Console.WriteLine("GetFWVersion : " + ret_result.ToString("X4"));
                 return ret_result;
             }
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("GetFWVersion - exception : " + ex.ToString());
+        if (DEBUG_VERBOSE>=0) Console.WriteLine("GetFWVersion - exception : " + ex.ToString());
         throw ex;
     }
     
     public void HWLC_SoftReset()
     {
-        Console.WriteLine("SoftReset");
+        if (DEBUG_VERBOSE>=1) Console.WriteLine("SoftReset");
         string msg_to_send = "=W#12345678\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 12, out char[] result, 20, '\r');
@@ -262,7 +274,7 @@ public class ArduinoSerialCom : IDisposable
         }
 
         Exception ex = new Exception("ReturnCode : "+retval.ToString()+" ; messageSent : " + msg_to_send + " ; messageReceived : " + (string)new(result));
-        Console.WriteLine("SoftReset - exception : " + ex.ToString());
+        if (DEBUG_VERBOSE>=0) Console.WriteLine("SoftReset - exception : " + ex.ToString());
         throw ex;
     }
 

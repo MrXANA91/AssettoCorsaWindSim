@@ -7,7 +7,7 @@ namespace ACConsoleTest {
         static void Main(string[] args) {
             AssettoCorsaWindSimController acws = new AssettoCorsaWindSimController();
 
-            Console.ReadKey();
+            ConsoleKeyInfo key = Console.ReadKey();
             acws.Dispose();
         }
     }

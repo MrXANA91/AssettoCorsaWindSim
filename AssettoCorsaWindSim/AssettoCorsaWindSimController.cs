@@ -85,8 +85,8 @@ public class AssettoCorsaWindSimController : IDisposable
                 if (_connected) {
                     // Here, we know there will be 2 fans.
                     // TODO : plan to fetch infos from Arduino
-                    fansParams.Add(new FanParameters(0f, 350f, 1f));
-                    fansParams.Add(new FanParameters(0f, 350f, 1f));
+                    fansParams.Add(new FanParameters(30f, 250f, 1f, FanParameters.POWER_COMPUTATION.ANGLE_ADJUSTING));
+                    fansParams.Add(new FanParameters(-30f, 250f, 1f, FanParameters.POWER_COMPUTATION.ANGLE_ADJUSTING));
 
                     fansController_activate();
 
@@ -143,10 +143,20 @@ public class AssettoCorsaWindSimController : IDisposable
     }
 
     void fansController_Update(float speedKmh, float localAngularVelocityY) {
+        uint fanA_power = fansParams[0].CalculatePower(speedKmh, localAngularVelocityY);
+        uint fanB_power = fansParams[1].CalculatePower(speedKmh, localAngularVelocityY);
+
         if (fansController.IsConnected && updateFansPower) {
+            String fanAString = "";
+            String fanBString = "";
+            if (fansParams[0].overload) fanAString += "+";
+            if (fansParams[0].underload) fanAString += "-";
+            if (fansParams[1].overload) fanBString += "+";
+            if (fansParams[1].underload) fanBString += "-";
+            Console.WriteLine("| {0, -3} - {1, 3} | ({2,-2},{3,2})", fanA_power, fanB_power, fanAString, fanBString);
             try {
                 lock(fansController) {
-                    fansController.SetFanAPower(fansParams[0].CalculatePower(speedKmh, localAngularVelocityY));
+                    fansController.SetFanAPower(fanA_power);
                 }
             }
             catch (Exception ex) {
@@ -154,7 +164,7 @@ public class AssettoCorsaWindSimController : IDisposable
             }
             try {
                 lock(fansController) {
-                    fansController.SetFanBPower(fansParams[1].CalculatePower(speedKmh, localAngularVelocityY));
+                    fansController.SetFanBPower(fanB_power);
                 }
             }
             catch (Exception ex) {
