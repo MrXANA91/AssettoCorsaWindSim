@@ -10,6 +10,18 @@ public class AssettoCorsaWindSimController : IDisposable
     private List<FanParameters> fansParams;
 
     private ArduinoSerialCom fansController;
+    
+    private static uint _debug_verbose = ArduinoSerialCom.VERBOSE_IMPORTANT;
+    public static uint DEBUG_VERBOSE {
+        get {
+            return _debug_verbose;
+        }
+        set {
+            ArduinoSerialCom.DEBUG_VERBOSE = value;
+            _debug_verbose = value;
+        }
+    }
+
     private Timer fansControllerTimer;
 
     private AssettoCorsa ac;
@@ -62,16 +74,16 @@ public class AssettoCorsaWindSimController : IDisposable
             case AC_STATUS.AC_OFF:
             case AC_STATUS.AC_REPLAY:
             default:
-                Console.WriteLine("Assetto Corsa is not live.");
+                if (_debug_verbose>=1)  Console.WriteLine("Assetto Corsa is not live.");
                 updateFansPower = false;
                 break;
             case AC_STATUS.AC_PAUSE:
-                Console.WriteLine("Assetto Corsa is paused!");
+                if (_debug_verbose>=1)  Console.WriteLine("Assetto Corsa is paused!");
                 updateFansPower = false;
                 fansController_deactivate();
                 break;
             case AC_STATUS.AC_LIVE:
-                Console.WriteLine("Assetto Corsa is started!");
+                if (_debug_verbose>=1)  Console.WriteLine("Assetto Corsa is started!");
                 updateFansPower = true;
                 fansController_activate();
                 fansControllerTimer.Start();
@@ -81,7 +93,7 @@ public class AssettoCorsaWindSimController : IDisposable
 
     private void fansControllerTimer_Elapsed(object? sender, ElapsedEventArgs e ) {
         if (!fansController.IsConnected) {
-            Console.WriteLine("Trying to connect...");
+            if (_debug_verbose>=1)  Console.WriteLine("Trying to connect...");
             foreach (string comport in fansController.ComportList) {
                 bool _connected;
                 lock(fansController) {
@@ -116,14 +128,14 @@ public class AssettoCorsaWindSimController : IDisposable
                     fansController.SetFanAEnable(true);
                 }
             } catch (Exception ex) {
-                Console.WriteLine("Enabling Fan A exception : "+ex.ToString());
+                if (_debug_verbose>=0)  Console.WriteLine("Enabling Fan A exception : "+ex.ToString());
             }
             try {
                 lock(fansController) {
                     fansController.SetFanBEnable(true);
                 }
             } catch (Exception ex) {
-                Console.WriteLine("Enabling Fan B exception : "+ex.ToString());
+                if (_debug_verbose>=0)  Console.WriteLine("Enabling Fan B exception : "+ex.ToString());
             }
         }
     }
@@ -135,14 +147,14 @@ public class AssettoCorsaWindSimController : IDisposable
                     fansController.SetFanAEnable(false);
                 }
             } catch (Exception ex) {
-                Console.WriteLine("Stopping Fan A exception : "+ex.ToString());
+                if (_debug_verbose>=0)  Console.WriteLine("Stopping Fan A exception : "+ex.ToString());
             }
             try {
                 lock(fansController) {
                     fansController.SetFanBEnable(false);
                 }
             } catch (Exception ex) {
-                Console.WriteLine("Stopping Fan B exception : "+ex.ToString());
+                if (_debug_verbose>=0)  Console.WriteLine("Stopping Fan B exception : "+ex.ToString());
             }
         }
     }
@@ -158,14 +170,14 @@ public class AssettoCorsaWindSimController : IDisposable
             if (fansParams[0].underload) fanAString += "-";
             if (fansParams[1].overload) fanBString += "+";
             if (fansParams[1].underload) fanBString += "-";
-            Console.WriteLine("| {0, -3} - {1, 3} | ({2,-2},{3,2})", fanA_power, fanB_power, fanAString, fanBString);
+            if (_debug_verbose>=2)  Console.WriteLine("| {0, -3} - {1, 3} | ({2,-2},{3,2})", fanA_power, fanB_power, fanAString, fanBString);
             try {
                 lock(fansController) {
                     fansController.SetFanAPower(fanA_power);
                 }
             }
             catch (Exception ex) {
-                Console.WriteLine("Could not send Power command for Fan A : "+ex.ToString());
+                if (_debug_verbose>=0)  Console.WriteLine("Could not send Power command for Fan A : "+ex.ToString());
             }
             try {
                 lock(fansController) {
@@ -173,7 +185,7 @@ public class AssettoCorsaWindSimController : IDisposable
                 }
             }
             catch (Exception ex) {
-                Console.WriteLine("Could not send Power command for Fan B : "+ex.ToString());
+                if (_debug_verbose>=0)  Console.WriteLine("Could not send Power command for Fan B : "+ex.ToString());
             }
         }
     }

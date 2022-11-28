@@ -101,7 +101,7 @@ public class ArduinoSerialCom : IDisposable
     // - true : Fan control active, turned on
     // - false : Fan turned off
     public void SetFanAEnable(bool enabled) {
-        if (DEBUG_VERBOSE>=2) Console.WriteLine(enabled ? "FanA Enable" : "FanA Disable");
+        if (DEBUG_VERBOSE>=3) Console.WriteLine(enabled ? "FanA Enable" : "FanA Disable");
         string msg_to_send = "=AE" + (enabled ? "1" : "0") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 5, out char[] result, 20, '\r');
@@ -121,7 +121,7 @@ public class ArduinoSerialCom : IDisposable
     }
 
     public void SetFanBEnable(bool enabled) {
-        if (DEBUG_VERBOSE>=2) Console.WriteLine(enabled ? "FanB Enable" : "FanB Disable");
+        if (DEBUG_VERBOSE>=3) Console.WriteLine(enabled ? "FanB Enable" : "FanB Disable");
         string msg_to_send = "=BE" + (enabled ? "1" : "0") + "\r";
 
         ReturnCode retval = SendReceiveUSB(_serialPort, msg_to_send.ToCharArray(), 5, out char[] result, 20, '\r');
