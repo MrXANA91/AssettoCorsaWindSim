@@ -22,14 +22,34 @@ public class AssettoCorsaWindSimController : IDisposable
         }
     }
 
+    public double PhysicsInterval {
+        get {
+            return ac.PhysicsInterval;
+        }
+        set {
+            ac.PhysicsInterval = value;
+        }
+    }
+
+    public double GraphicsInterval {
+        get {
+            return ac.GraphicsInterval;
+        }
+        set {
+            ac.GraphicsInterval = value;
+        }
+    }
+
     private Timer fansControllerTimer;
 
     private AssettoCorsa ac;
     private bool updateFansPower;
 
+    private AC_STATUS gameStatus = AC_STATUS.AC_OFF;
+
     public AssettoCorsaWindSimController() {
         ac = new AssettoCorsa();
-        ac.PhysicsInterval = 100;
+        ac.PhysicsInterval = 30;
         ac.GraphicsInterval = 100;  // Used for GameStatusUpdate
         ac.PhysicsUpdated += ac_PhysicsInfoUpdated;
         ac.GameStatusChanged += ac_GameStatusUpdated;
@@ -66,11 +86,16 @@ public class AssettoCorsaWindSimController : IDisposable
         float speedKmh = e.Physics.SpeedKmh;
         float localangularvelocityY = localangularvelocity[1];
 
+        float localangularvelocityYDegrees = localangularvelocityY / MathF.PI * 180.0f;
+
+        if (_debug_verbose>=2 && gameStatus == AC_STATUS.AC_LIVE)  Console.Write("{0, 6:F2}km/h, {1, 6:F1}, ({2, 6:F3}, {3, 6:F3}, {4, 6:F3}) ", speedKmh, localangularvelocityYDegrees, localangularvelocity[0], localangularvelocityY, localangularvelocity[2]);
+
         fansController_Update(speedKmh, localangularvelocityY);
     }
 
     private void ac_GameStatusUpdated(object sender, GameStatusEventArgs e) {
-        switch(e.GameStatus) {
+        gameStatus = e.GameStatus;
+        switch(gameStatus) {
             case AC_STATUS.AC_OFF:
             case AC_STATUS.AC_REPLAY:
             default:
@@ -102,8 +127,9 @@ public class AssettoCorsaWindSimController : IDisposable
                 if (_connected) {
                     // Here, we know there will be 2 fans.
                     // TODO : plan to fetch infos from Arduino
-                    fansParams.Add(new FanParameters(30f, 250f, 1f, FanParameters.POWER_COMPUTATION.ANGLE_ADJUSTING));
-                    fansParams.Add(new FanParameters(-30f, 250f, 1f, FanParameters.POWER_COMPUTATION.ANGLE_ADJUSTING));
+                    // TODO : change FanParameters dynamically from the chosen car (even chosen combo car/track ?)
+                    fansParams.Add(new FanParameters(30f));
+                    fansParams.Add(new FanParameters(-30f));
 
                     fansController_activate();
 

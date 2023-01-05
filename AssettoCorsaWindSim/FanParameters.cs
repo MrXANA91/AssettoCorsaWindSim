@@ -4,14 +4,17 @@ public class FanParameters
 {
     public enum POWER_COMPUTATION {
         SPEED_ONLY = 0,
-        ANGLE_ADJUSTING_LOWERING_ONLY = 1,
-        ANGLE_ADJUSTING = 2
+        STRICT_VECTOR_PROJECTION = 1,
+        EXAGERATE_VECTOR_PROJECTION = 2
     };
 
+    public const float DEFAULT_ANGLE = 0f;
+    public const float DEFAULT_MAXSPEED = 250f;
+    public const float DEFAULT_GAMMA = 0.5f;
+    public const POWER_COMPUTATION DEFAULT_COMPUTATION = POWER_COMPUTATION.SPEED_ONLY;
     public float angle;
     public float maxSpeed;
     public float gamma;
-
     public POWER_COMPUTATION powerCompFunc;
 
     public Boolean overload {
@@ -21,7 +24,7 @@ public class FanParameters
         get; private set;
     }
 
-    public FanParameters(float _angle = 0.0f, float _maxSpeed = 200f, float _gamma = 1f, POWER_COMPUTATION _powerCompFunc = POWER_COMPUTATION.SPEED_ONLY) {
+    public FanParameters(float _angle = DEFAULT_ANGLE, float _maxSpeed = DEFAULT_MAXSPEED, float _gamma = DEFAULT_GAMMA, POWER_COMPUTATION _powerCompFunc = DEFAULT_COMPUTATION) {
         angle = _angle;
         maxSpeed = _maxSpeed;
         gamma = _gamma;
@@ -32,10 +35,10 @@ public class FanParameters
     }
 
     public FanParameters() {
-        angle = 0.0f;
-        maxSpeed = 200f;
-        gamma = 1f;
-        powerCompFunc = POWER_COMPUTATION.SPEED_ONLY;
+        angle = DEFAULT_ANGLE;
+        maxSpeed = DEFAULT_MAXSPEED;
+        gamma = DEFAULT_GAMMA;
+        powerCompFunc = DEFAULT_COMPUTATION;
 
         overload = false;
         underload = false;
@@ -48,11 +51,11 @@ public class FanParameters
             default:
                 powerValue = ComputeSpeedOnly(speedKmh, angularVelocity);
                 break;
-            case POWER_COMPUTATION.ANGLE_ADJUSTING_LOWERING_ONLY:
-                powerValue = ComputeAngleAdjLoweringOnly(speedKmh, angularVelocity);
+            case POWER_COMPUTATION.STRICT_VECTOR_PROJECTION:
+                powerValue = ComputeVectorProj(speedKmh, angularVelocity, angle);
                 break;
-            case POWER_COMPUTATION.ANGLE_ADJUSTING:
-                powerValue = ComputeAngleAdj(speedKmh, angularVelocity);
+            case POWER_COMPUTATION.EXAGERATE_VECTOR_PROJECTION:
+                powerValue = ComputeVectorProj(speedKmh, angularVelocity, 60.0f);
                 break;
         }
 
@@ -61,38 +64,18 @@ public class FanParameters
         if (overload) powerValue = 1f;
         if (underload) powerValue = 0f;
 
-        return Convert.ToUInt32(powerValue*255f);
+        return Convert.ToUInt32(MathF.Pow(powerValue, gamma)*255f);
     }
 
     private float ComputeSpeedOnly(float speedKmh, float angularVelocity) {
-        return (float)(Math.Pow(speedKmh, gamma)/Math.Pow(maxSpeed, gamma));
+        return (float)(speedKmh/maxSpeed);
     }
 
-    private float ComputeAngleAdjLoweringOnly(float speedKmh, float angularVelocity) {
-        float baseValue = ComputeSpeedOnly(speedKmh, angularVelocity);
-        float adjustValue = angularVelocity*angle*MathF.PI/180f;    // This number has no physical sense, for test purposes for the moment
+    private float ComputeVectorProj(float speedKmh, float angularVelocity, float targetAngle) {
+        float baseValue = (float)(speedKmh/maxSpeed);
+        float angleRad = angle / 180.0f * MathF.PI;
+        float targetAngleRad = targetAngle / 180.0f * MathF.PI;
 
-        if (adjustValue > 0f) {
-            adjustValue = 0f;
-        }
-        if (adjustValue < -1.0f) {
-            adjustValue = -1f;
-        }
-
-        return baseValue + baseValue*adjustValue;
-    }
-
-    private float ComputeAngleAdj(float speedKmh, float angularVelocity) {
-        float baseValue = ComputeSpeedOnly(speedKmh, angularVelocity);
-        float adjustValue = angularVelocity*angle*MathF.PI/180f;    // This number has no physical sense, for test purposes for the moment
-
-        if (adjustValue > 1.0f) {
-            adjustValue = 1f;
-        }
-        if (adjustValue < -1.0f) {
-            adjustValue = -1f;
-        }
-
-        return baseValue + baseValue*adjustValue;
+        return baseValue * MathF.Cos(targetAngleRad*(angleRad - angularVelocity)/angleRad);
     }
 }

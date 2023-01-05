@@ -12,6 +12,7 @@ namespace ACConsoleTest {
             String strValue = "";
             float floatValue = 0f;
             uint uintValue = 0;
+            double doubleValue = 0;
 
             Boolean loop = true;
             do {
@@ -34,8 +35,9 @@ namespace ACConsoleTest {
                                 float _gamma = fanParam.gamma;
                                 float _maxSpeed = fanParam.maxSpeed;
                                 FanParameters.POWER_COMPUTATION _powerCompFunc = fanParam.powerCompFunc;
-                                Console.WriteLine("Index : {0}, angle : {1}, gamma : {2}, maxSpeed : {3}, powerCompFunc : "+ _powerCompFunc.ToString(), list.IndexOf(fanParam), _angle.ToString(), _gamma.ToString(), _maxSpeed.ToString());
+                                Console.WriteLine("\tIndex : {0}, angle : {1}, gamma : {2}, maxSpeed : {3}, powerCompFunc : "+ _powerCompFunc.ToString(), list.IndexOf(fanParam), _angle.ToString(), _gamma.ToString(), _maxSpeed.ToString());
                             }
+                            Console.WriteLine("\tPhysicsInterval = {0}ms | GraphicsInterval = {1}ms", acws.PhysicsInterval, acws.GraphicsInterval);
                         }
                         break;
                     case (ConsoleKey.A):
@@ -48,7 +50,7 @@ namespace ACConsoleTest {
                         list = acws.GetFanParametersList();
                         switch(cki.Key) {
                             case (ConsoleKey.A):
-                                Console.WriteLine("ConsoleCommand : Fan A - Write Angle (in degrees)");
+                                Console.WriteLine("ConsoleCommand : Fan A - Write Angle (in degrees - default is 30)");
                                 strValue = Console.ReadLine();
 
                                 try {
@@ -63,7 +65,7 @@ namespace ACConsoleTest {
                                 list[0].angle = floatValue;
                                 break;
                             case (ConsoleKey.G):
-                                Console.WriteLine("ConsoleCommand : Fan A - Write Gamma (must be strictly greater than 0)");
+                                Console.WriteLine("ConsoleCommand : Fan A - Write Gamma (must be strictly greater than 0 - default is 0,5)");
                                 strValue = Console.ReadLine();
 
                                 try {
@@ -78,7 +80,7 @@ namespace ACConsoleTest {
                                 list[0].gamma = floatValue;
                                 break;
                             case (ConsoleKey.S):
-                                Console.WriteLine("ConsoleCommand : Fan A - Write MaxSpeed (in km/h) (must be greater than 1)");
+                                Console.WriteLine("ConsoleCommand : Fan A - Write MaxSpeed (in km/h) (must be greater than 1 - default is 250)");
                                 strValue = Console.ReadLine();
 
                                 try {
@@ -93,7 +95,8 @@ namespace ACConsoleTest {
                                 list[0].maxSpeed = floatValue;
                                 break;
                             case (ConsoleKey.F):
-                                Console.WriteLine("ConsoleCommand : Fan A - Write Function (must be 0, 1 or 2)");
+                                Console.WriteLine("ConsoleCommand : Fan A - Write Function (must be 0, 1 or 2 - default is 0)");
+                                Console.WriteLine("\t0 : SPEED_ONLY | 1 : STRICT_VECTOR_PROJECTION | 2 : EXAGERATE_VECTOR_PROJECTION");
                                 strValue = Console.ReadLine();
 
                                 try {
@@ -120,7 +123,7 @@ namespace ACConsoleTest {
                         list = acws.GetFanParametersList();
                         switch(cki.Key) {
                             case (ConsoleKey.A):
-                                Console.WriteLine("ConsoleCommand : Fan B - Write Angle (in degrees)");
+                                Console.WriteLine("ConsoleCommand : Fan B - Write Angle (in degrees - default is -30)");
                                 strValue = Console.ReadLine();
 
                                 try {
@@ -135,7 +138,7 @@ namespace ACConsoleTest {
                                 list[1].angle = floatValue;
                                 break;
                             case (ConsoleKey.G):
-                                Console.WriteLine("ConsoleCommand : Fan B - Write Gamma (must be strictly greater than 0)");
+                                Console.WriteLine("ConsoleCommand : Fan B - Write Gamma (must be strictly greater than 0 - default is 0,5)");
                                 strValue = Console.ReadLine();
 
                                 try {
@@ -150,7 +153,7 @@ namespace ACConsoleTest {
                                 list[1].gamma = floatValue;
                                 break;
                             case (ConsoleKey.S):
-                                Console.WriteLine("ConsoleCommand : Fan B - Write MaxSpeed (in km/h) (must be greater than 1)");
+                                Console.WriteLine("ConsoleCommand : Fan B - Write MaxSpeed (in km/h) (must be greater than 1 - default is 250)");
                                 strValue = Console.ReadLine();
 
                                 try {
@@ -165,7 +168,8 @@ namespace ACConsoleTest {
                                 list[1].maxSpeed = floatValue;
                                 break;
                             case (ConsoleKey.F):
-                                Console.WriteLine("ConsoleCommand : Fan B - Write Function (must be 0, 1 or 2)");
+                                Console.WriteLine("ConsoleCommand : Fan B - Write Function (must be 0, 1 or 2 - default is 0)");
+                                Console.WriteLine("\t0 : SPEED_ONLY | 1 : STRICT_VECTOR_PROJECTION | 2 : EXAGERATE_VECTOR_PROJECTION");
                                 strValue = Console.ReadLine();
 
                                 try {
@@ -196,6 +200,48 @@ namespace ACConsoleTest {
                             AssettoCorsaWindSimController.DEBUG_VERBOSE += 1;
                         }
                         Console.WriteLine("ConsoleCommand : Debug Verbose = {0}", AssettoCorsaWindSimController.DEBUG_VERBOSE);
+                        break;
+                    case (ConsoleKey.I):
+                        Console.WriteLine("ConsoleCommand : Intervals settings - choose PhysicsInterval (P) or GraphicsInterval (G)");
+                        Console.WriteLine("ConsoleCommand : Press Escape or another letter to cancel");
+                        doubleValue = 0;
+                        cki = Console.ReadKey();
+                        switch(cki.Key) {
+                            case (ConsoleKey.P):
+                                Console.WriteLine("ConsoleCommand : PhysicsInterval - Write value in ms (must be greater than 0 - default is 30)");
+                                strValue = Console.ReadLine();
+
+                                try {
+                                    doubleValue = Convert.ToDouble(strValue);
+                                }
+                                catch (Exception ex) {
+                                    Console.WriteLine("ConsoleCommand : PhysicsInterval - Could not change PhysicsInterval value ("+ex.Message+";"+strValue+")");
+                                    break;
+                                }
+
+                                Console.WriteLine("ConsoleCommand : PhysicsInterval - Setting PhysicsInterval to "+((double)doubleValue).ToString());
+                                acws.PhysicsInterval = doubleValue;
+                                break;
+                            case (ConsoleKey.G):
+                                Console.WriteLine("ConsoleCommand : GraphicsInterval - Write value in ms (must be greater than 0 - default is 100)");
+                                strValue = Console.ReadLine();
+
+                                try {
+                                    doubleValue = Convert.ToDouble(strValue);
+                                }
+                                catch (Exception ex) {
+                                    Console.WriteLine("ConsoleCommand : GraphicsInterval - Could not change GraphicsInterval value ("+ex.Message+";"+strValue+")");
+                                    break;
+                                }
+
+                                Console.WriteLine("ConsoleCommand : GraphicsInterval - Setting GraphicsInterval to "+((double)doubleValue).ToString());
+                                acws.GraphicsInterval = doubleValue;
+                                break;
+                            default:
+                            case (ConsoleKey.Escape):
+                                Console.WriteLine("ConsoleCommand : Fan B - Cancelled");
+                                break;
+                        }
                         break;
                     case (ConsoleKey.Escape):
                         Console.WriteLine("ConsoleCommand : Exit Main Program");
