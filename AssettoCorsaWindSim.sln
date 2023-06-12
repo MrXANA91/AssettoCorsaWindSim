@@ -3,19 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assettocorsasharedmemory", "assettocorsasharedmemory\assettocorsasharedmemory.csproj", "{7F1E2687-BFD3-4D05-A1FE-4B1EB0447327}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "assettocorsasharedmemory", "assettocorsasharedmemory\assettocorsasharedmemory.csproj", "{7F1E2687-BFD3-4D05-A1FE-4B1EB0447327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACConsoleTest", "ACConsoleTest\ACConsoleTest.csproj", "{C2A8EE27-8189-4F39-9F13-09223C0C0456}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ACConsoleTest", "ACConsoleTest\ACConsoleTest.csproj", "{C2A8EE27-8189-4F39-9F13-09223C0C0456}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssettoCorsaWindSim", "AssettoCorsaWindSim\AssettoCorsaWindSim.csproj", "{1FD28026-8AF8-43A3-9058-D59D139C7F25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssettoCorsaWindSim", "AssettoCorsaWindSim\AssettoCorsaWindSim.csproj", "{1FD28026-8AF8-43A3-9058-D59D139C7F25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACWSControlPanel", "ACWSControlPanel\ACWSControlPanel.csproj", "{7AA8E407-34DA-440E-88FC-0BA0B6D800BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7F1E2687-BFD3-4D05-A1FE-4B1EB0447327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +29,15 @@ Global
 		{1FD28026-8AF8-43A3-9058-D59D139C7F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FD28026-8AF8-43A3-9058-D59D139C7F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD28026-8AF8-43A3-9058-D59D139C7F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA8E407-34DA-440E-88FC-0BA0B6D800BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA8E407-34DA-440E-88FC-0BA0B6D800BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA8E407-34DA-440E-88FC-0BA0B6D800BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA8E407-34DA-440E-88FC-0BA0B6D800BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1961FE5-B509-4586-93FC-92CBA622319B}
 	EndGlobalSection
 EndGlobal
