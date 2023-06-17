@@ -6,7 +6,24 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>AssettoCorsaWindSim Control Panel</AssemblyName>
+    <ApplicationIcon>Dall-e icon-2-greys.ico</ApplicationIcon>
+    <Title>$(AssemblyName)</Title>
+    <Product>AssettoCorsaWindSim</Product>
+    <Company>MrXANA91</Company>
+    <PackageProjectUrl>https://paulchanvin.fr/mes-projets/assettocorsawindsim/</PackageProjectUrl>
+    <Description>AssettoCorsaWindSim is an open source project that aim to give simracers the ability to feel the wind when driving.</Description>
+    <Copyright>Paul Chanvin - 2023</Copyright>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Dall-e icon-2-greys.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\assettocorsasharedmemory\assettocorsasharedmemory.csproj" />
+    <ProjectReference Include="..\AssettoCorsaWindSim\AssettoCorsaWindSim.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Resources.Designer.cs">

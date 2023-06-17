@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using AssettoCorsaWindSim;
 
 namespace ACWSControlPanel
 {
@@ -26,7 +27,7 @@ namespace ACWSControlPanel
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -78,6 +79,13 @@ namespace ACWSControlPanel
                     notifyIcon.Icon = Resources.Dall_e_icon_2_play;
                     break;
             }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox about = new AboutBox();
+            about.TopMost = true;
+            about.Show();
         }
     }
 }

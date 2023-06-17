@@ -63,16 +63,6 @@ namespace ACWSControlPanel {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
         /// </summary>
-        internal static System.Drawing.Icon Dall_e_icon_2 {
-            get {
-                object obj = ResourceManager.GetObject("Dall_e_icon_2", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
-        /// </summary>
         internal static System.Drawing.Icon Dall_e_icon_2_error {
             get {
                 object obj = ResourceManager.GetObject("Dall_e_icon_2_error", resourceCulture);
@@ -117,6 +107,26 @@ namespace ACWSControlPanel {
             get {
                 object obj = ResourceManager.GetObject("Dall_e_icon_2_waiting", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_connexion_usb_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-connexion-usb-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_usb_déconnectée_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-usb-déconnectée-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
