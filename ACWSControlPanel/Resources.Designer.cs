@@ -113,6 +113,66 @@ namespace ACWSControlPanel {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_assetto_corsa_competizione_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-assetto-corsa-competizione-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_assetto_corsa_competizione_100_error {
+            get {
+                object obj = ResourceManager.GetObject("icons8-assetto-corsa-competizione-100_error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_assetto_corsa_competizione_100_pause {
+            get {
+                object obj = ResourceManager.GetObject("icons8-assetto-corsa-competizione-100_pause", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_assetto_corsa_competizione_100_play {
+            get {
+                object obj = ResourceManager.GetObject("icons8-assetto-corsa-competizione-100_play", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_assetto_corsa_competizione_100_ready {
+            get {
+                object obj = ResourceManager.GetObject("icons8-assetto-corsa-competizione-100_ready", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_assetto_corsa_competizione_100_unknown {
+            get {
+                object obj = ResourceManager.GetObject("icons8-assetto-corsa-competizione-100_unknown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_connexion_usb_96 {
             get {
                 object obj = ResourceManager.GetObject("icons8-connexion-usb-96", resourceCulture);

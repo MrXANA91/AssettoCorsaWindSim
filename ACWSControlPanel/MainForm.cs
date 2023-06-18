@@ -83,8 +83,10 @@ namespace ACWSControlPanel
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutBox about = new AboutBox();
-            about.TopMost = true;
+            AboutBox about = new AboutBox
+            {
+                TopMost = true
+            };
             about.Show();
         }
     }
