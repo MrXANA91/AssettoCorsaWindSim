@@ -14,6 +14,8 @@ namespace ACConsoleTest {
             uint uintValue = 0;
             double doubleValue = 0;
 
+            acws.Start();
+
             Boolean loop = true;
             do {
                 cki = Console.ReadKey();
