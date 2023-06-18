@@ -50,7 +50,7 @@
             hardwareGroupBox = new GroupBox();
             fanBPowerTextBox = new TextBox();
             fanBPowerLabel = new Label();
-            fanATextBox = new TextBox();
+            fanAPowerTextBox = new TextBox();
             fanAPowerLabel = new Label();
             usbLabel = new Label();
             usbPictureBox = new PictureBox();
@@ -68,79 +68,79 @@
             // 
             // notifyIcon
             // 
-            resources.ApplyResources(notifyIcon, "notifyIcon");
             notifyIcon.ContextMenuStrip = notifyContextMenu;
+            resources.ApplyResources(notifyIcon, "notifyIcon");
             notifyIcon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
             // 
             // notifyContextMenu
             // 
-            resources.ApplyResources(notifyContextMenu, "notifyContextMenu");
             notifyContextMenu.ImageScalingSize = new Size(20, 20);
             notifyContextMenu.Items.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
             notifyContextMenu.Name = "notifyContextMenu";
+            resources.ApplyResources(notifyContextMenu, "notifyContextMenu");
             // 
             // exitToolStripMenuItem
             // 
-            resources.ApplyResources(exitToolStripMenuItem, "exitToolStripMenuItem");
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            resources.ApplyResources(exitToolStripMenuItem, "exitToolStripMenuItem");
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // statusStrip
             // 
-            resources.ApplyResources(statusStrip, "statusStrip");
             statusStrip.ImageScalingSize = new Size(20, 20);
+            resources.ApplyResources(statusStrip, "statusStrip");
             statusStrip.Name = "statusStrip";
             // 
             // menuStrip
             // 
-            resources.ApplyResources(menuStrip, "menuStrip");
             menuStrip.ImageScalingSize = new Size(20, 20);
             menuStrip.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, helpToolStripMenuItem });
+            resources.ApplyResources(menuStrip, "menuStrip");
             menuStrip.Name = "menuStrip";
             // 
             // settingsToolStripMenuItem
             // 
-            resources.ApplyResources(settingsToolStripMenuItem, "settingsToolStripMenuItem");
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            resources.ApplyResources(settingsToolStripMenuItem, "settingsToolStripMenuItem");
             // 
             // helpToolStripMenuItem
             // 
-            resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
             helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // aboutToolStripMenuItem
             // 
-            resources.ApplyResources(aboutToolStripMenuItem, "aboutToolStripMenuItem");
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            resources.ApplyResources(aboutToolStripMenuItem, "aboutToolStripMenuItem");
             aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // tabControl1
             // 
-            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.Controls.Add(generalTabPage);
             tabControl1.Controls.Add(fan1AdvancedTabPage);
             tabControl1.Controls.Add(fan2AdvancedTabPage);
+            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             // 
             // generalTabPage
             // 
-            resources.ApplyResources(generalTabPage, "generalTabPage");
             generalTabPage.Controls.Add(acGroupBox);
             generalTabPage.Controls.Add(hardwareGroupBox);
+            resources.ApplyResources(generalTabPage, "generalTabPage");
             generalTabPage.Name = "generalTabPage";
             generalTabPage.UseVisualStyleBackColor = true;
             // 
             // acGroupBox
             // 
-            resources.ApplyResources(acGroupBox, "acGroupBox");
             acGroupBox.Controls.Add(rotationTextBox);
             acGroupBox.Controls.Add(speedTextBox);
             acGroupBox.Controls.Add(rotationLabel);
             acGroupBox.Controls.Add(speedLabel);
             acGroupBox.Controls.Add(acLabel);
             acGroupBox.Controls.Add(acPictureBox);
+            resources.ApplyResources(acGroupBox, "acGroupBox");
             acGroupBox.Name = "acGroupBox";
             acGroupBox.TabStop = false;
             // 
@@ -173,20 +173,20 @@
             // 
             // acPictureBox
             // 
-            resources.ApplyResources(acPictureBox, "acPictureBox");
             acPictureBox.Image = Resources.icons8_assetto_corsa_competizione_100_unknown;
+            resources.ApplyResources(acPictureBox, "acPictureBox");
             acPictureBox.Name = "acPictureBox";
             acPictureBox.TabStop = false;
             // 
             // hardwareGroupBox
             // 
-            resources.ApplyResources(hardwareGroupBox, "hardwareGroupBox");
             hardwareGroupBox.Controls.Add(fanBPowerTextBox);
             hardwareGroupBox.Controls.Add(fanBPowerLabel);
-            hardwareGroupBox.Controls.Add(fanATextBox);
+            hardwareGroupBox.Controls.Add(fanAPowerTextBox);
             hardwareGroupBox.Controls.Add(fanAPowerLabel);
             hardwareGroupBox.Controls.Add(usbLabel);
             hardwareGroupBox.Controls.Add(usbPictureBox);
+            resources.ApplyResources(hardwareGroupBox, "hardwareGroupBox");
             hardwareGroupBox.Name = "hardwareGroupBox";
             hardwareGroupBox.TabStop = false;
             // 
@@ -201,11 +201,11 @@
             resources.ApplyResources(fanBPowerLabel, "fanBPowerLabel");
             fanBPowerLabel.Name = "fanBPowerLabel";
             // 
-            // fanATextBox
+            // fanAPowerTextBox
             // 
-            resources.ApplyResources(fanATextBox, "fanATextBox");
-            fanATextBox.Name = "fanATextBox";
-            fanATextBox.ReadOnly = true;
+            resources.ApplyResources(fanAPowerTextBox, "fanAPowerTextBox");
+            fanAPowerTextBox.Name = "fanAPowerTextBox";
+            fanAPowerTextBox.ReadOnly = true;
             // 
             // fanAPowerLabel
             // 
@@ -219,8 +219,8 @@
             // 
             // usbPictureBox
             // 
-            resources.ApplyResources(usbPictureBox, "usbPictureBox");
             usbPictureBox.Image = Resources.icons8_usb_déconnectée_96;
+            resources.ApplyResources(usbPictureBox, "usbPictureBox");
             usbPictureBox.Name = "usbPictureBox";
             usbPictureBox.TabStop = false;
             // 
@@ -289,7 +289,7 @@
         private TextBox speedTextBox;
         private Label rotationLabel;
         private Label fanAPowerLabel;
-        private TextBox fanATextBox;
+        private TextBox fanAPowerTextBox;
         private TextBox fanBPowerTextBox;
         private Label fanBPowerLabel;
     }

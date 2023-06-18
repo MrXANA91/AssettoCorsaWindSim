@@ -117,191 +117,798 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="notifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="notifyContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>142, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="rotationLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+  <data name="notifyContextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 28</value>
   </data>
-  <data name="fanATextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 172</value>
+  <data name="&gt;&gt;notifyContextMenu.Name" xml:space="preserve">
+    <value>notifyContextMenu</value>
   </data>
-  <data name="&gt;&gt;fanATextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;notifyContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="notifyIcon.Text" xml:space="preserve">
+    <value>notifyIcon</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="notifyIcon.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 24</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>330, 17</value>
+  </metadata>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 428</value>
+  </data>
+  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 22</value>
+  </data>
+  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="statusStrip.Text" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>467, 17</value>
+  </metadata>
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 28</value>
+  </data>
+  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="menuStrip.Text" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 24</value>
   </data>
-  <data name="rotationTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 205</value>
+  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="notifyContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 28</value>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 24</value>
   </data>
-  <data name="&gt;&gt;usbLabel.Parent" xml:space="preserve">
-    <value>hardwareGroupBox</value>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
   </data>
-  <data name="&gt;&gt;speedTextBox.Parent" xml:space="preserve">
-    <value>acGroupBox</value>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 26</value>
   </data>
-  <data name="fanBPowerTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 27</value>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="fan2AdvancedTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>768, 361</value>
+  <data name="&gt;&gt;generalTabPage.Name" xml:space="preserve">
+    <value>generalTabPage</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="acGroupBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;generalTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;generalTabPage.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;generalTabPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;fan1AdvancedTabPage.Name" xml:space="preserve">
+    <value>fan1AdvancedTabPage</value>
+  </data>
+  <data name="&gt;&gt;fan1AdvancedTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fan1AdvancedTabPage.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;fan1AdvancedTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="hardwareGroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;rotationTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;fan2AdvancedTabPage.Name" xml:space="preserve">
+    <value>fan2AdvancedTabPage</value>
   </data>
   <data name="&gt;&gt;fan2AdvancedTabPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;fan2AdvancedTabPage.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;fan2AdvancedTabPage.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 31</value>
+  </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>776, 394</value>
   </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;acGroupBox.Name" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;acGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;acGroupBox.Parent" xml:space="preserve">
+    <value>generalTabPage</value>
+  </data>
+  <data name="&gt;&gt;acGroupBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;hardwareGroupBox.Name" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;hardwareGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;hardwareGroupBox.Parent" xml:space="preserve">
+    <value>generalTabPage</value>
+  </data>
+  <data name="&gt;&gt;hardwareGroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="generalTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="generalTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="generalTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>768, 361</value>
+  </data>
+  <data name="generalTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="generalTabPage.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="&gt;&gt;generalTabPage.Name" xml:space="preserve">
+    <value>generalTabPage</value>
+  </data>
+  <data name="&gt;&gt;generalTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;generalTabPage.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;generalTabPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;rotationTextBox.Name" xml:space="preserve">
+    <value>rotationTextBox</value>
+  </data>
+  <data name="&gt;&gt;rotationTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rotationTextBox.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;rotationTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;speedTextBox.Name" xml:space="preserve">
+    <value>speedTextBox</value>
+  </data>
+  <data name="&gt;&gt;speedTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;speedTextBox.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;speedTextBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;rotationLabel.Name" xml:space="preserve">
+    <value>rotationLabel</value>
+  </data>
+  <data name="&gt;&gt;rotationLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rotationLabel.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;rotationLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;speedLabel.Name" xml:space="preserve">
+    <value>speedLabel</value>
+  </data>
+  <data name="&gt;&gt;speedLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;speedLabel.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;speedLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;acLabel.Name" xml:space="preserve">
+    <value>acLabel</value>
+  </data>
+  <data name="&gt;&gt;acLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;acLabel.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;acLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;acPictureBox.Name" xml:space="preserve">
+    <value>acPictureBox</value>
+  </data>
   <data name="&gt;&gt;acPictureBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;acPictureBox.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;acPictureBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="acGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 6</value>
+  </data>
+  <data name="acGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>375, 349</value>
+  </data>
+  <data name="acGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="acGroupBox.Text" xml:space="preserve">
+    <value>Assetto Corsa</value>
+  </data>
+  <data name="&gt;&gt;acGroupBox.Name" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;acGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;acGroupBox.Parent" xml:space="preserve">
+    <value>generalTabPage</value>
+  </data>
+  <data name="&gt;&gt;acGroupBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rotationTextBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="rotationTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 205</value>
+  </data>
+  <data name="rotationTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 27</value>
+  </data>
+  <data name="rotationTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="rotationTextBox.Text" xml:space="preserve">
+    <value>- °</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="rotationTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="hardwareGroupBox.Text" xml:space="preserve">
-    <value>Hardware</value>
+  <data name="&gt;&gt;rotationTextBox.Name" xml:space="preserve">
+    <value>rotationTextBox</value>
   </data>
-  <data name="fanBPowerTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 205</value>
-  </data>
-  <data name="notifyIcon.Text" xml:space="preserve">
-    <value>notifyIcon</value>
-  </data>
-  <data name="&gt;&gt;usbLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 31</value>
+  <data name="&gt;&gt;rotationTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rotationTextBox.Parent" xml:space="preserve">
     <value>acGroupBox</value>
   </data>
-  <data name="fanATextBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;rotationTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="speedTextBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="speedTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 172</value>
+  </data>
+  <data name="speedTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 27</value>
+  </data>
+  <data name="speedTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 22</value>
+  <data name="speedTextBox.Text" xml:space="preserve">
+    <value>- km/h</value>
   </data>
-  <data name="&gt;&gt;rotationLabel.Name" xml:space="preserve">
-    <value>rotationLabel</value>
+  <data name="speedTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;speedTextBox.Name" xml:space="preserve">
+    <value>speedTextBox</value>
+  </data>
+  <data name="&gt;&gt;speedTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;speedTextBox.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;speedTextBox.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="rotationLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="rotationLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 208</value>
+  </data>
+  <data name="rotationLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
+  </data>
+  <data name="rotationLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="rotationLabel.Text" xml:space="preserve">
+    <value>Rotation :</value>
+  </data>
+  <data name="&gt;&gt;rotationLabel.Name" xml:space="preserve">
+    <value>rotationLabel</value>
+  </data>
+  <data name="&gt;&gt;rotationLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rotationLabel.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;rotationLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="speedLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="speedLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 175</value>
+  </data>
+  <data name="speedLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
+  </data>
+  <data name="speedLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="speedLabel.Text" xml:space="preserve">
+    <value>Speed :</value>
+  </data>
+  <data name="&gt;&gt;speedLabel.Name" xml:space="preserve">
+    <value>speedLabel</value>
+  </data>
+  <data name="&gt;&gt;speedLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;speedLabel.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;speedLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="acLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="acLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 18pt, style=Bold</value>
+  </data>
+  <data name="acLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 54</value>
+  </data>
+  <data name="acLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 41</value>
+  </data>
   <data name="acLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="acLabel.Text" xml:space="preserve">
+    <value>Unknown state</value>
+  </data>
+  <data name="&gt;&gt;acLabel.Name" xml:space="preserve">
+    <value>acLabel</value>
+  </data>
+  <data name="&gt;&gt;acLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;acLabel.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;acLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="acPictureBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 26</value>
+  </data>
+  <data name="acPictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 100</value>
+  </data>
+  <data name="acPictureBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;acPictureBox.Name" xml:space="preserve">
+    <value>acPictureBox</value>
+  </data>
+  <data name="&gt;&gt;acPictureBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;acPictureBox.Parent" xml:space="preserve">
+    <value>acGroupBox</value>
+  </data>
+  <data name="&gt;&gt;acPictureBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerTextBox.Name" xml:space="preserve">
+    <value>fanBPowerTextBox</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerTextBox.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerLabel.Name" xml:space="preserve">
+    <value>fanBPowerLabel</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerLabel.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerTextBox.Name" xml:space="preserve">
+    <value>fanAPowerTextBox</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerTextBox.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerLabel.Name" xml:space="preserve">
+    <value>fanAPowerLabel</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerLabel.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;usbLabel.Name" xml:space="preserve">
+    <value>usbLabel</value>
+  </data>
+  <data name="&gt;&gt;usbLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;usbLabel.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;usbLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;usbPictureBox.Name" xml:space="preserve">
+    <value>usbPictureBox</value>
+  </data>
+  <data name="&gt;&gt;usbPictureBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;usbPictureBox.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;usbPictureBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="hardwareGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="hardwareGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>375, 349</value>
+  </data>
+  <data name="hardwareGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hardwareGroupBox.Text" xml:space="preserve">
+    <value>Hardware</value>
+  </data>
+  <data name="&gt;&gt;hardwareGroupBox.Name" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;hardwareGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;hardwareGroupBox.Parent" xml:space="preserve">
+    <value>generalTabPage</value>
+  </data>
+  <data name="&gt;&gt;hardwareGroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="fanBPowerTextBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="fanBPowerTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 205</value>
+  </data>
+  <data name="fanBPowerTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 27</value>
+  </data>
+  <data name="fanBPowerTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="fanBPowerTextBox.Text" xml:space="preserve">
+    <value>- %</value>
+  </data>
+  <data name="fanBPowerTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerTextBox.Name" xml:space="preserve">
+    <value>fanBPowerTextBox</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerTextBox.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="fanBPowerLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="fanBPowerLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 208</value>
+  </data>
+  <data name="fanBPowerLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="fanBPowerLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="fanBPowerLabel.Text" xml:space="preserve">
+    <value>Fan B Power :</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerLabel.Name" xml:space="preserve">
+    <value>fanBPowerLabel</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerLabel.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;fanBPowerLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="fanAPowerTextBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="fanAPowerTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 172</value>
+  </data>
+  <data name="fanAPowerTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 27</value>
+  </data>
+  <data name="fanAPowerTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="fanAPowerTextBox.Text" xml:space="preserve">
+    <value>- %</value>
+  </data>
+  <data name="fanAPowerTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerTextBox.Name" xml:space="preserve">
+    <value>fanAPowerTextBox</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerTextBox.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="fanAPowerLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="fanAPowerLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 175</value>
+  </data>
+  <data name="fanAPowerLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 20</value>
+  </data>
+  <data name="fanAPowerLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="fanAPowerLabel.Text" xml:space="preserve">
+    <value>Fan A Power :</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerLabel.Name" xml:space="preserve">
+    <value>fanAPowerLabel</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerLabel.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;fanAPowerLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="usbLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="usbLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 18pt, style=Bold</value>
+  </data>
+  <data name="usbLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 54</value>
+  </data>
+  <data name="usbLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 41</value>
+  </data>
+  <data name="usbLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="usbLabel.Text" xml:space="preserve">
+    <value>Not connected</value>
+  </data>
+  <data name="&gt;&gt;usbLabel.Name" xml:space="preserve">
+    <value>usbLabel</value>
+  </data>
+  <data name="&gt;&gt;usbLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;usbLabel.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;usbLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="usbPictureBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 26</value>
+  </data>
+  <data name="usbPictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="usbPictureBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;usbPictureBox.Name" xml:space="preserve">
+    <value>usbPictureBox</value>
+  </data>
+  <data name="&gt;&gt;usbPictureBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;usbPictureBox.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;usbPictureBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="fan1AdvancedTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="fan1AdvancedTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="fan1AdvancedTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>768, 361</value>
+  </data>
+  <data name="fan1AdvancedTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="fan1AdvancedTabPage.Text" xml:space="preserve">
     <value>Fan A (Advanced)</value>
   </data>
-  <data name="acGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 6</value>
+  <data name="&gt;&gt;fan1AdvancedTabPage.Name" xml:space="preserve">
+    <value>fan1AdvancedTabPage</value>
   </data>
-  <data name="acPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 100</value>
+  <data name="&gt;&gt;fan1AdvancedTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;speedLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;fan1AdvancedTabPage.Parent" xml:space="preserve">
+    <value>tabControl1</value>
   </data>
-  <data name="generalTabPage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="&gt;&gt;fan1AdvancedTabPage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="fan2AdvancedTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="fan2AdvancedTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>768, 361</value>
   </data>
-  <data name="acGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 349</value>
-  </data>
-  <data name="&gt;&gt;acPictureBox.Parent" xml:space="preserve">
-    <value>acGroupBox</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fanBPowerLabel.Name" xml:space="preserve">
-    <value>fanBPowerLabel</value>
-  </data>
-  <data name="acLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 18pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;rotationLabel.Parent" xml:space="preserve">
-    <value>acGroupBox</value>
-  </data>
-  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
-    <value>aboutToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;usbPictureBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="acLabel.Text" xml:space="preserve">
-    <value>Unknown state</value>
-  </data>
-  <data name="acPictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 26</value>
-  </data>
-  <data name="&gt;&gt;speedTextBox.Name" xml:space="preserve">
-    <value>speedTextBox</value>
-  </data>
-  <data name="&gt;&gt;fanAPowerLabel.Parent" xml:space="preserve">
-    <value>hardwareGroupBox</value>
-  </data>
-  <data name="fanAPowerLabel.Text" xml:space="preserve">
-    <value>Fan A Power :</value>
+  <data name="fan2AdvancedTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="fan2AdvancedTabPage.Text" xml:space="preserve">
     <value>Fan B (Advanced)</value>
   </data>
-  <data name="fanAPowerLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 175</value>
+  <data name="&gt;&gt;fan2AdvancedTabPage.Name" xml:space="preserve">
+    <value>fan2AdvancedTabPage</value>
   </data>
-  <data name="generalTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;fan2AdvancedTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainForm</value>
+  <data name="&gt;&gt;fan2AdvancedTabPage.Parent" xml:space="preserve">
+    <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;acPictureBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;fan2AdvancedTabPage.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="speedLabel.Text" xml:space="preserve">
-    <value>Speed :</value>
-  </data>
-  <data name="usbLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;fanATextBox.Name" xml:space="preserve">
-    <value>fanATextBox</value>
-  </data>
-  <data name="fanBPowerTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;fanBPowerTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="menuStrip.Text" xml:space="preserve">
-    <value>menuStrip</value>
-  </data>
-  <data name="&gt;&gt;usbPictureBox.Parent" xml:space="preserve">
-    <value>hardwareGroupBox</value>
-  </data>
-  <data name="fanBPowerLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 208</value>
-  </data>
-  <data name="fanAPowerLabel.AutoSize" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 20</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4797,446 +5404,43 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
-  <data name="fanATextBox.Text" xml:space="preserve">
-    <value>- %</value>
-  </data>
-  <data name="&gt;&gt;fanBPowerLabel.Parent" xml:space="preserve">
-    <value>hardwareGroupBox</value>
-  </data>
-  <data name="&gt;&gt;speedTextBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;settingsToolStripMenuItem.Name" xml:space="preserve">
-    <value>settingsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;acLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="fanBPowerTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="fan1AdvancedTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="fan1AdvancedTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>768, 361</value>
-  </data>
-  <data name="&gt;&gt;fan2AdvancedTabPage.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="generalTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="acLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 54</value>
-  </data>
-  <data name="&gt;&gt;speedLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="usbPictureBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="rotationLabel.Text" xml:space="preserve">
-    <value>Rotation :</value>
-  </data>
-  <data name="usbLabel.Text" xml:space="preserve">
-    <value>Not connected</value>
-  </data>
-  <data name="&gt;&gt;fanATextBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="fanAPowerLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="hardwareGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 349</value>
-  </data>
-  <data name="&gt;&gt;rotationLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="fanBPowerLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
-  </data>
-  <data name="&gt;&gt;fanATextBox.Parent" xml:space="preserve">
-    <value>hardwareGroupBox</value>
-  </data>
-  <data name="speedTextBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="usbLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 18pt, style=Bold</value>
-  </data>
-  <data name="acPictureBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="speedLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 20</value>
-  </data>
-  <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fan1AdvancedTabPage.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;usbPictureBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;notifyContextMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="generalTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="&gt;&gt;notifyIcon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;acLabel.Name" xml:space="preserve">
-    <value>acLabel</value>
-  </data>
-  <data name="fan2AdvancedTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="&gt;&gt;usbLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;hardwareGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;notifyContextMenu.Name" xml:space="preserve">
-    <value>notifyContextMenu</value>
-  </data>
-  <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="speedLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 175</value>
-  </data>
-  <data name="&gt;&gt;acLabel.Parent" xml:space="preserve">
-    <value>acGroupBox</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;fan1AdvancedTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="fanBPowerLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="speedTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 172</value>
-  </data>
-  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;hardwareGroupBox.Parent" xml:space="preserve">
-    <value>generalTabPage</value>
-  </data>
-  <data name="fan1AdvancedTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="fanBPowerLabel.Text" xml:space="preserve">
-    <value>Fan B Power :</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="rotationLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>92, 208</value>
-  </data>
-  <data name="speedLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;fanBPowerLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 24</value>
-  </data>
-  <data name="&gt;&gt;generalTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fanBPowerLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="fanBPowerLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;speedLabel.Parent" xml:space="preserve">
-    <value>acGroupBox</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>AssettoCorsaWindSim Control Panel</value>
   </data>
   <data name="&gt;&gt;notifyIcon.Name" xml:space="preserve">
     <value>notifyIcon</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 28</value>
-  </data>
-  <data name="usbLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 41</value>
-  </data>
-  <data name="statusStrip.Text" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;acGroupBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fan1AdvancedTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;settingsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
-  </data>
-  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 428</value>
-  </data>
-  <data name="acGroupBox.Text" xml:space="preserve">
-    <value>Assetto Corsa</value>
-  </data>
-  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>Exit</value>
-  </data>
-  <data name="hardwareGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="speedTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>AssettoCorsaWindSim Control Panel</value>
-  </data>
-  <data name="generalTabPage.Text" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="notifyIcon.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="fanBPowerTextBox.Text" xml:space="preserve">
-    <value>- %</value>
-  </data>
-  <data name="speedLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="fan1AdvancedTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;hardwareGroupBox.Name" xml:space="preserve">
-    <value>hardwareGroupBox</value>
-  </data>
-  <data name="fanATextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
-    <value>menuStrip</value>
-  </data>
-  <data name="&gt;&gt;acGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="speedTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="speedTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 27</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="usbPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="fanATextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 27</value>
-  </data>
-  <data name="&gt;&gt;hardwareGroupBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;generalTabPage.Name" xml:space="preserve">
-    <value>generalTabPage</value>
-  </data>
-  <data name="&gt;&gt;usbLabel.Name" xml:space="preserve">
-    <value>usbLabel</value>
-  </data>
-  <data name="usbPictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 26</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="&gt;&gt;fan1AdvancedTabPage.Name" xml:space="preserve">
-    <value>fan1AdvancedTabPage</value>
-  </data>
-  <data name="&gt;&gt;speedTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;acLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="usbLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 54</value>
-  </data>
-  <data name="speedTextBox.Text" xml:space="preserve">
-    <value>? km/h</value>
-  </data>
-  <data name="&gt;&gt;fanBPowerTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;generalTabPage.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;usbPictureBox.Name" xml:space="preserve">
-    <value>usbPictureBox</value>
-  </data>
-  <data name="&gt;&gt;fanAPowerLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="fanAPowerLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 20</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;rotationTextBox.Name" xml:space="preserve">
-    <value>rotationTextBox</value>
-  </data>
-  <data name="rotationTextBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="acLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 41</value>
+  <data name="&gt;&gt;notifyIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
     <value>exitToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;fanBPowerTextBox.Name" xml:space="preserve">
-    <value>fanBPowerTextBox</value>
+  <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="rotationLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;settingsToolStripMenuItem.Name" xml:space="preserve">
+    <value>settingsToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;fanBPowerTextBox.Parent" xml:space="preserve">
-    <value>hardwareGroupBox</value>
-  </data>
-  <data name="&gt;&gt;fanAPowerLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;fan2AdvancedTabPage.Name" xml:space="preserve">
-    <value>fan2AdvancedTabPage</value>
-  </data>
-  <data name="rotationTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;fanAPowerLabel.Name" xml:space="preserve">
-    <value>fanAPowerLabel</value>
-  </data>
-  <data name="&gt;&gt;acPictureBox.Name" xml:space="preserve">
-    <value>acPictureBox</value>
-  </data>
-  <data name="usbLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rotationTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 27</value>
-  </data>
-  <data name="settingsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;speedLabel.Name" xml:space="preserve">
-    <value>speedLabel</value>
-  </data>
-  <data name="fan2AdvancedTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;settingsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
     <value>helpToolStripMenuItem</value>
   </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 24</value>
+  <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;rotationLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;acGroupBox.Name" xml:space="preserve">
-    <value>acGroupBox</value>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 20</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
   </data>
-  <data name="&gt;&gt;generalTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;fan2AdvancedTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="fanBPowerTextBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="rotationTextBox.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="fanATextBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;rotationTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;acGroupBox.Parent" xml:space="preserve">
-    <value>generalTabPage</value>
-  </data>
-  <data name="acLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <metadata name="notifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="notifyContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>142, 17</value>
-  </metadata>
-  <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>330, 17</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>467, 17</value>
-  </metadata>
 </root>
