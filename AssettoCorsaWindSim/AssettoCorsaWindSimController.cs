@@ -7,9 +7,23 @@ namespace AssettoCorsaWindSim;
 
 public class AssettoCorsaWindSimController : IDisposable
 {
+    public delegate void AssettoCorsaConnectionChangedHandler(object sender, GameStatusEventArgs e);
+    public delegate void AssettoCorsaDataReceivedHandler(object sender, AssettoCorsaDataEventArgs e);
+
+    public delegate void HardwareConnectionChangedHandler(object sender, HardwareConnectionEventArgs e);
+    public delegate void HardwareDataSentHandler(object sender, HardwareDataEventArgs e);
+
     private List<FanParameters> fansParams;
 
     private ArduinoSerialCom fansController;
+    private bool fansControllerConnected;
+    private object connectLock = new object();
+
+    public bool IsHardwareConnected
+    {
+        get { return fansControllerConnected; }
+        private set { fansControllerConnected = value; }
+    }
     
     private static uint _debug_verbose = ArduinoSerialCom.VERBOSE_IMPORTANT;
     public static uint DEBUG_VERBOSE {
@@ -45,7 +59,42 @@ public class AssettoCorsaWindSimController : IDisposable
     private AssettoCorsa ac;
     private bool updateFansPower;
 
-    private AC_STATUS gameStatus = AC_STATUS.AC_OFF;
+    public AC_STATUS gameStatus
+    {
+        get; private set;
+    }
+
+    #region "EVENTS MANAGER"
+
+    public event AssettoCorsaConnectionChangedHandler? AssettoCorsaConnectionChanged;
+
+    public virtual void OnAssettoCorsaConnectionChanged(GameStatusEventArgs e)
+    {
+        AssettoCorsaConnectionChanged?.Invoke(this, e);
+    }
+
+    public event AssettoCorsaDataReceivedHandler? AssettoCorsaDataReceived;
+
+    public virtual void OnAssettoCorsaDataReceived(AssettoCorsaDataEventArgs e)
+    {
+        AssettoCorsaDataReceived?.Invoke(this, e);
+    }
+
+    public event HardwareConnectionChangedHandler? HardwareConnectionChanged;
+
+    public virtual void OnHardwareConnectionChanged(HardwareConnectionEventArgs e)
+    {
+        HardwareConnectionChanged?.Invoke(this, e);
+    }
+
+    public event HardwareDataSentHandler? HardwareDataSent;
+
+    public virtual void OnHardwareDataSent(HardwareDataEventArgs e)
+    {
+        HardwareDataSent?.Invoke(this, e);
+    }
+
+    #endregion
 
     public AssettoCorsaWindSimController() {
         ac = new AssettoCorsa();
@@ -60,10 +109,9 @@ public class AssettoCorsaWindSimController : IDisposable
         fansControllerTimer.Elapsed += fansControllerTimer_Elapsed;
 
         updateFansPower = false;
+        gameStatus = AC_STATUS.AC_OFF;
 
         fansParams = new List<FanParameters>();
-
-        fansControllerTimer.Start();
     }
 
     ~AssettoCorsaWindSimController() {
@@ -71,6 +119,19 @@ public class AssettoCorsaWindSimController : IDisposable
     }
 
     public void Dispose() {
+        Stop();
+
+        GC.SuppressFinalize(this);
+    }
+
+    public void Start()
+    {
+        fansControllerTimer.Start();
+        ac.Start();
+    }
+
+    public void Stop()
+    {
         ac.Stop();
         fansController_StopAndDisconnect();
     }
@@ -88,6 +149,8 @@ public class AssettoCorsaWindSimController : IDisposable
 
         float localangularvelocityYDegrees = localangularvelocityY / MathF.PI * 180.0f;
 
+        OnAssettoCorsaDataReceived(new AssettoCorsaDataEventArgs(speedKmh, localangularvelocityYDegrees));
+
         if (_debug_verbose>=2 && gameStatus == AC_STATUS.AC_LIVE)  Console.Write("{0, 6:F2}km/h, {1, 6:F1}, ({2, 6:F3}, {3, 6:F3}, {4, 6:F3}) ", speedKmh, localangularvelocityYDegrees, localangularvelocity[0], localangularvelocityY, localangularvelocity[2]);
 
         fansController_Update(speedKmh, localangularvelocityY);
@@ -95,6 +158,7 @@ public class AssettoCorsaWindSimController : IDisposable
 
     private void ac_GameStatusUpdated(object sender, GameStatusEventArgs e) {
         gameStatus = e.GameStatus;
+        OnAssettoCorsaConnectionChanged(new GameStatusEventArgs(gameStatus));
         switch(gameStatus) {
             case AC_STATUS.AC_OFF:
             case AC_STATUS.AC_REPLAY:
@@ -117,26 +181,47 @@ public class AssettoCorsaWindSimController : IDisposable
     }
 
     private void fansControllerTimer_Elapsed(object? sender, ElapsedEventArgs e ) {
-        if (!fansController.IsConnected) {
-            if (_debug_verbose>=1)  Console.WriteLine("Trying to connect...");
-            foreach (string comport in fansController.ComportList) {
-                bool _connected;
-                lock(fansController) {
-                    _connected = fansController.Connect(comport, 115200);
-                }
-                if (_connected) {
-                    // Here, we know there will be 2 fans.
-                    // TODO : plan to fetch infos from Arduino
-                    // TODO : change FanParameters dynamically from the chosen car (even chosen combo car/track ?)
-                    fansParams.Add(new FanParameters(30f));
-                    fansParams.Add(new FanParameters(-30f));
+        bool isConnected;
+        
+        lock (connectLock)
+        {
+            isConnected = fansController.IsConnected;
 
-                    fansController_activate();
-
-                    ac.Start();
+            if (!isConnected)
+            {
+                if (_debug_verbose >= 1) Console.WriteLine("Trying to connect...");
+                foreach (string comport in fansController.ComportList)
+                {
+                    bool _connected;
+                    lock (fansController)
+                    {
+                        _connected = fansController.Connect(comport, 115200);
+                    }
+                    if (_connected)
+                    {
+                        InitializeFans();
+                        break;
+                    }
                 }
             }
         }
+
+        if (isConnected != fansControllerConnected)
+        {
+            fansControllerConnected = isConnected;
+            OnHardwareConnectionChanged(new HardwareConnectionEventArgs(isConnected));
+        }
+    }
+
+    private void InitializeFans()
+    {
+        // Here, we know there will be 2 fans.
+        // TODO : plan to fetch infos from Arduino
+        // TODO : change FanParameters dynamically from the chosen car (even chosen combo car/track ?)
+        fansParams.Add(new FanParameters(30f));
+        fansParams.Add(new FanParameters(-30f));
+
+        fansController_activate();
     }
 
     private void fansController_StopAndDisconnect() {
@@ -190,6 +275,8 @@ public class AssettoCorsaWindSimController : IDisposable
         uint fanB_power = fansParams[1].CalculatePower(speedKmh, localAngularVelocityY);
 
         if (fansController.IsConnected && updateFansPower) {
+            OnHardwareDataSent(new HardwareDataEventArgs(fanA_power, fanB_power));
+
             String fanAString = "";
             String fanBString = "";
             if (fansParams[0].overload) fanAString += "+";
