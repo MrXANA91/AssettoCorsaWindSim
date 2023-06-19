@@ -35,6 +35,9 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             statusStrip = new StatusStrip();
             menuStrip = new MenuStrip();
+            applicationToolStripMenuItem = new ToolStripMenuItem();
+            backgroundToolStripMenuItem = new ToolStripMenuItem();
+            closeApplicationToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
@@ -94,9 +97,27 @@
             // menuStrip
             // 
             menuStrip.ImageScalingSize = new Size(20, 20);
-            menuStrip.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { applicationToolStripMenuItem, settingsToolStripMenuItem, helpToolStripMenuItem });
             resources.ApplyResources(menuStrip, "menuStrip");
             menuStrip.Name = "menuStrip";
+            // 
+            // applicationToolStripMenuItem
+            // 
+            applicationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backgroundToolStripMenuItem, closeApplicationToolStripMenuItem });
+            applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
+            resources.ApplyResources(applicationToolStripMenuItem, "applicationToolStripMenuItem");
+            // 
+            // backgroundToolStripMenuItem
+            // 
+            backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
+            resources.ApplyResources(backgroundToolStripMenuItem, "backgroundToolStripMenuItem");
+            backgroundToolStripMenuItem.Click += backgroundToolStripMenuItem_Click;
+            // 
+            // closeApplicationToolStripMenuItem
+            // 
+            closeApplicationToolStripMenuItem.Name = "closeApplicationToolStripMenuItem";
+            resources.ApplyResources(closeApplicationToolStripMenuItem, "closeApplicationToolStripMenuItem");
+            closeApplicationToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // settingsToolStripMenuItem
             // 
@@ -292,5 +313,8 @@
         private TextBox fanAPowerTextBox;
         private TextBox fanBPowerTextBox;
         private Label fanBPowerLabel;
+        private ToolStripMenuItem applicationToolStripMenuItem;
+        private ToolStripMenuItem backgroundToolStripMenuItem;
+        private ToolStripMenuItem closeApplicationToolStripMenuItem;
     }
 }
