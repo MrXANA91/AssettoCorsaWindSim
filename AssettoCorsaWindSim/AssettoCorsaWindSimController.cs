@@ -150,8 +150,8 @@ public class AssettoCorsaWindSimController : IDisposable
         float localangularvelocityYDegrees = localangularvelocityY / MathF.PI * 180.0f;
 
         OnAssettoCorsaDataReceived(new AssettoCorsaDataEventArgs(speedKmh, localangularvelocityYDegrees));
-
-        if (_debug_verbose>=2 && gameStatus == AC_STATUS.AC_LIVE)  Console.Write("{0, 6:F2}km/h, {1, 6:F1}, ({2, 6:F3}, {3, 6:F3}, {4, 6:F3}) ", speedKmh, localangularvelocityYDegrees, localangularvelocity[0], localangularvelocityY, localangularvelocity[2]);
+        // if (_debug_verbose>=2 && gameStatus == AC_STATUS.AC_LIVE)  Console.Write("{0, 6:F2}km/h, {1, 6:F1}, ({2, 6:F3}, {3, 6:F3}, {4, 6:F3}) ", speedKmh, localangularvelocityYDegrees, localangularvelocity[0], localangularvelocityY, localangularvelocity[2]);
+        if (_debug_verbose>=2 && gameStatus == AC_STATUS.AC_LIVE)  Console.Write("{0, 6:F2}km/h, {1, 6:F1} ", speedKmh, localangularvelocityYDegrees);
 
         fansController_Update(speedKmh, localangularvelocityY);
     }

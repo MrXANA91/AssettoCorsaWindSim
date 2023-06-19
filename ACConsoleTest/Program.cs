@@ -109,7 +109,7 @@ namespace ACConsoleTest {
                                     break;
                                 }
 
-                                Console.WriteLine("ConsoleCommand : Fan A - Setting MaxSpeed to "+((AssettoCorsaWindSim.FanParameters.POWER_COMPUTATION)uintValue).ToString());
+                                Console.WriteLine("ConsoleCommand : Fan A - Setting Function to "+((AssettoCorsaWindSim.FanParameters.POWER_COMPUTATION)uintValue).ToString());
                                 list[0].powerCompFunc = (AssettoCorsaWindSim.FanParameters.POWER_COMPUTATION)uintValue;
                                 break;
                             default:
@@ -182,7 +182,7 @@ namespace ACConsoleTest {
                                     break;
                                 }
 
-                                Console.WriteLine("ConsoleCommand : Fan B - Setting MaxSpeed to "+((AssettoCorsaWindSim.FanParameters.POWER_COMPUTATION)uintValue).ToString());
+                                Console.WriteLine("ConsoleCommand : Fan B - Setting Function to "+((AssettoCorsaWindSim.FanParameters.POWER_COMPUTATION)uintValue).ToString());
                                 list[1].powerCompFunc = (AssettoCorsaWindSim.FanParameters.POWER_COMPUTATION)uintValue;
                                 break;
                             default:
