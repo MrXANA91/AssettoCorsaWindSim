@@ -111,7 +111,11 @@ public class AssettoCorsaWindSimController : IDisposable
         updateFansPower = false;
         gameStatus = AC_STATUS.AC_OFF;
 
-        fansParams = new List<FanParameters>();
+        fansParams = new List<FanParameters>
+        {
+            new FanParameters(30f),
+            new FanParameters(-30f)
+        };
     }
 
     ~AssettoCorsaWindSimController() {
@@ -218,8 +222,6 @@ public class AssettoCorsaWindSimController : IDisposable
         // Here, we know there will be 2 fans.
         // TODO : plan to fetch infos from Arduino
         // TODO : change FanParameters dynamically from the chosen car (even chosen combo car/track ?)
-        fansParams.Add(new FanParameters(30f));
-        fansParams.Add(new FanParameters(-30f));
 
         fansController_activate();
     }
