@@ -64,12 +64,14 @@ public class ArduinoSerialCom : IDisposable
     }
 
     public bool Connect(string comport, int baudrate) {
+        if (_serialPort.IsOpen) { _serialPort.Close(); }
         _serialPort.PortName = comport;
         _serialPort.BaudRate = baudrate;
 
-        _serialPort.Open();
-        if (_serialPort.IsOpen) {
-            try {
+        try
+        {
+            _serialPort.Open();
+            if (_serialPort.IsOpen) {
                 UInt16 ver = GetFWVersion();
                 if (ver > 0)
                 {
@@ -80,10 +82,12 @@ public class ArduinoSerialCom : IDisposable
                 {
                     Disconnect();
                 }
-            } catch(Exception ex) {
-                if (DEBUG_VERBOSE>=0) Console.WriteLine("Failed to connect : " + comport);
-                if (DEBUG_VERBOSE>=0) Console.WriteLine(ex.ToString());
             }
+        }
+        catch (Exception ex)
+        {
+            if (DEBUG_VERBOSE >= 0) Console.WriteLine("Failed to connect : " + comport);
+            if (DEBUG_VERBOSE >= 0) Console.WriteLine(ex.ToString());
         }
 
         return false;
