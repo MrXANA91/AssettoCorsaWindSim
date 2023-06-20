@@ -47,6 +47,8 @@ namespace ACWSControlPanel
             UpdateHardwareStatus(false);
         }
 
+        #region "GUI callback methods"
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             //this.Hide();
@@ -97,54 +99,37 @@ namespace ACWSControlPanel
             }
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox about = new AboutBox
+            {
+                TopMost = true
+            };
+            about.Show();
+        }
+
+        private void backgroundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            allowClose = false;
+            this.Close();
+        }
+
+        #endregion
+
+        #region "ACWS callback methods"
+
         private void Acws_AssettoCorsaConnectionChanged(object sender, GameStatusEventArgs e)
         {
             if (this.InvokeRequired)
             {
                 this.Invoke(new MethodInvoker(delegate
                 {
-                    UpdateAssettoCorsa(e.GameStatus);
-
-                    if (acws.IsHardwareConnected)
-                    {
-                        switch (e.GameStatus)
-                        {
-                            default:
-                            case AC_STATUS.AC_OFF:
-                                UpdateNotifyIcon(GAME_NOT_DETECTED);
-                                break;
-                            case AC_STATUS.AC_REPLAY:
-                            case AC_STATUS.AC_PAUSE:
-                                UpdateNotifyIcon(GAME_NOT_RUNNING);
-                                break;
-                            case AC_STATUS.AC_LIVE:
-                                UpdateNotifyIcon(GAME_RUNNING);
-                                break;
-                        }
-                    }
+                    Update_OnAssettoCorsaConnectionChanged(e);
                 }));
             }
             else
             {
-                UpdateAssettoCorsa(e.GameStatus);
-
-                if (acws.IsHardwareConnected)
-                {
-                    switch (e.GameStatus)
-                    {
-                        default:
-                        case AC_STATUS.AC_OFF:
-                            UpdateNotifyIcon(GAME_NOT_DETECTED);
-                            break;
-                        case AC_STATUS.AC_REPLAY:
-                        case AC_STATUS.AC_PAUSE:
-                            UpdateNotifyIcon(GAME_NOT_RUNNING);
-                            break;
-                        case AC_STATUS.AC_LIVE:
-                            UpdateNotifyIcon(GAME_RUNNING);
-                            break;
-                    }
-                }
+                Update_OnAssettoCorsaConnectionChanged(e);
             }
         }
 
@@ -154,14 +139,12 @@ namespace ACWSControlPanel
             {
                 this.Invoke(new MethodInvoker(delegate
                 {
-                    speedTextBox.Text = e.Speed.ToString("0.0") + " km/h";
-                    rotationTextBox.Text = e.LocalAngularVelocity.ToString("0.000") + " °";
+                    Update_OnAssettoCorsaDataReceived(e);
                 }));
             }
             else
             {
-                speedTextBox.Text = e.Speed.ToString("0.0") + " km/h";
-                rotationTextBox.Text = e.LocalAngularVelocity.ToString("0.000") + " °";
+                Update_OnAssettoCorsaDataReceived(e);
             }
         }
 
@@ -172,56 +155,12 @@ namespace ACWSControlPanel
             {
                 this.Invoke(new MethodInvoker(delegate
                 {
-                    UpdateHardwareStatus(e.Connected);
-
-                    if (!acws.IsHardwareConnected)
-                    {
-                        UpdateNotifyIcon(DEVICE_NOT_CONNECTED, true); // TODO : replace 'true' by the notification parameter
-                    }
-                    else
-                    {
-                        switch (acws.gameStatus)
-                        {
-                            default:
-                            case AC_STATUS.AC_OFF:
-                                UpdateNotifyIcon(GAME_NOT_DETECTED);
-                                break;
-                            case AC_STATUS.AC_REPLAY:
-                            case AC_STATUS.AC_PAUSE:
-                                UpdateNotifyIcon(GAME_NOT_RUNNING);
-                                break;
-                            case AC_STATUS.AC_LIVE:
-                                UpdateNotifyIcon(GAME_RUNNING);
-                                break;
-                        }
-                    }
+                    Update_OnHardwareConnectionChanged(e);
                 }));
             }
             else
             {
-                UpdateHardwareStatus(e.Connected);
-
-                if (!acws.IsHardwareConnected)
-                {
-                    UpdateNotifyIcon(DEVICE_NOT_CONNECTED, true); // TODO : replace 'true' by the notification parameter
-                }
-                else
-                {
-                    switch (acws.gameStatus)
-                    {
-                        default:
-                        case AC_STATUS.AC_OFF:
-                            UpdateNotifyIcon(GAME_NOT_DETECTED);
-                            break;
-                        case AC_STATUS.AC_REPLAY:
-                        case AC_STATUS.AC_PAUSE:
-                            UpdateNotifyIcon(GAME_NOT_RUNNING);
-                            break;
-                        case AC_STATUS.AC_LIVE:
-                            UpdateNotifyIcon(GAME_RUNNING);
-                            break;
-                    }
-                }
+                Update_OnHardwareConnectionChanged(e);
             }
         }
 
@@ -231,15 +170,86 @@ namespace ACWSControlPanel
             {
                 this.Invoke(new MethodInvoker(delegate
                 {
-                    fanAPowerTextBox.Text = ((float)e.FanAPower * 100f / 255f).ToString("0.0") + " %";
-                    fanBPowerTextBox.Text = ((float)e.FanBPower * 100f / 255f).ToString("0.0") + " %";
+                    Update_OnHardwareDataSent(e);
                 }));
             }
             else
             {
-                fanAPowerTextBox.Text = ((float)e.FanAPower * 100f / 255f).ToString("0.0") + " %";
-                fanBPowerTextBox.Text = ((float)e.FanBPower * 100f / 255f).ToString("0.0") + " %";
+                Update_OnHardwareDataSent(e);
             }
+        }
+
+        #endregion
+
+        #region "Update GUI elements methods"
+
+        private void Update_OnAssettoCorsaConnectionChanged(GameStatusEventArgs e)
+        {
+            UpdateAssettoCorsaStatus(e.GameStatus);
+
+            if (acws.IsHardwareConnected)
+            {
+                switch (e.GameStatus)
+                {
+                    default:
+                    case AC_STATUS.AC_OFF:
+                        UpdateNotifyIcon(GAME_NOT_DETECTED);
+                        break;
+                    case AC_STATUS.AC_REPLAY:
+                    case AC_STATUS.AC_PAUSE:
+                        UpdateNotifyIcon(GAME_NOT_RUNNING);
+                        break;
+                    case AC_STATUS.AC_LIVE:
+                        UpdateNotifyIcon(GAME_RUNNING);
+                        break;
+                }
+            }
+        }
+
+        private void Update_OnAssettoCorsaDataReceived(AssettoCorsaDataEventArgs e)
+        {
+            speedTextBox.Text = e.Speed.ToString("0.0") + " km/h";
+            rotationTextBox.Text = e.LocalAngularVelocity.ToString("0.000") + " °";
+        }
+
+        private void Update_OnHardwareConnectionChanged(HardwareConnectionEventArgs e)
+        {
+            UpdateHardwareStatus(e.Connected);
+
+            if (!acws.IsHardwareConnected)
+            {
+                UpdateNotifyIcon(DEVICE_NOT_CONNECTED, true); // TODO : replace 'true' by the notification parameter
+            }
+            else
+            {
+                switch (acws.gameStatus)
+                {
+                    default:
+                    case AC_STATUS.AC_OFF:
+                        UpdateNotifyIcon(GAME_NOT_DETECTED);
+                        break;
+                    case AC_STATUS.AC_REPLAY:
+                    case AC_STATUS.AC_PAUSE:
+                        UpdateNotifyIcon(GAME_NOT_RUNNING);
+                        break;
+                    case AC_STATUS.AC_LIVE:
+                        UpdateNotifyIcon(GAME_RUNNING);
+                        break;
+                }
+            }
+        }
+
+        private void Update_OnHardwareDataSent(HardwareDataEventArgs e)
+        {
+            fanALabel.Text = "Fan A : " + (e.FanAEnabled ? "ON" : "OFF");
+            float aPow = (float)e.FanAPower * 1000f / 255f;
+            fanAPowerTextBox.Text = (aPow / 10f).ToString("0.0") + " %";
+            APowerProgressBar.Value = Convert.ToInt32(aPow);
+
+            fanBLabel.Text = "Fan B : " + (e.FanBEnabled ? "ON" : "OFF");
+            float bPow = (float)e.FanBPower * 1000f / 255f;
+            fanBPowerTextBox.Text = (bPow / 10f).ToString("0.0") + " %";
+            BPowerProgressBar.Value = Convert.ToInt32(bPow);
         }
 
         private void UpdateNotifyIcon(int state, bool showBalloon = false)
@@ -308,7 +318,7 @@ namespace ACWSControlPanel
             }
         }
 
-        private void UpdateAssettoCorsa(AC_STATUS status)
+        private void UpdateAssettoCorsaStatus(AC_STATUS status)
         {
             int icon;
             switch (status)
@@ -334,10 +344,10 @@ namespace ACWSControlPanel
                     acLabel.Text = AC_PAUSED;
                     break;
             }
-            UpdateAssettoCorsaImage(icon);
+            UpdateAssettoCorsaStatusImage(icon);
         }
 
-        private void UpdateAssettoCorsaImage(int icon)
+        private void UpdateAssettoCorsaStatusImage(int icon)
         {
             switch (icon)
             {
@@ -363,19 +373,6 @@ namespace ACWSControlPanel
             }
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox about = new AboutBox
-            {
-                TopMost = true
-            };
-            about.Show();
-        }
-
-        private void backgroundToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            allowClose = false;
-            this.Close();
-        }
+        #endregion
     }
 }

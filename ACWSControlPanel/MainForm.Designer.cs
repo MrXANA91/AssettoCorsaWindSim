@@ -51,10 +51,12 @@
             acLabel = new Label();
             acPictureBox = new PictureBox();
             hardwareGroupBox = new GroupBox();
+            BPowerProgressBar = new ProgressBar();
+            APowerProgressBar = new ProgressBar();
             fanBPowerTextBox = new TextBox();
-            fanBPowerLabel = new Label();
+            fanBLabel = new Label();
             fanAPowerTextBox = new TextBox();
-            fanAPowerLabel = new Label();
+            fanALabel = new Label();
             usbLabel = new Label();
             usbPictureBox = new PictureBox();
             fan1AdvancedTabPage = new TabPage();
@@ -121,8 +123,8 @@
             // 
             // settingsToolStripMenuItem
             // 
-            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             resources.ApplyResources(settingsToolStripMenuItem, "settingsToolStripMenuItem");
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             // 
             // helpToolStripMenuItem
             // 
@@ -201,15 +203,31 @@
             // 
             // hardwareGroupBox
             // 
+            hardwareGroupBox.Controls.Add(BPowerProgressBar);
+            hardwareGroupBox.Controls.Add(APowerProgressBar);
             hardwareGroupBox.Controls.Add(fanBPowerTextBox);
-            hardwareGroupBox.Controls.Add(fanBPowerLabel);
+            hardwareGroupBox.Controls.Add(fanBLabel);
             hardwareGroupBox.Controls.Add(fanAPowerTextBox);
-            hardwareGroupBox.Controls.Add(fanAPowerLabel);
+            hardwareGroupBox.Controls.Add(fanALabel);
             hardwareGroupBox.Controls.Add(usbLabel);
             hardwareGroupBox.Controls.Add(usbPictureBox);
             resources.ApplyResources(hardwareGroupBox, "hardwareGroupBox");
             hardwareGroupBox.Name = "hardwareGroupBox";
             hardwareGroupBox.TabStop = false;
+            // 
+            // BPowerProgressBar
+            // 
+            resources.ApplyResources(BPowerProgressBar, "BPowerProgressBar");
+            BPowerProgressBar.Maximum = 1000;
+            BPowerProgressBar.Name = "BPowerProgressBar";
+            BPowerProgressBar.Step = 1;
+            // 
+            // APowerProgressBar
+            // 
+            resources.ApplyResources(APowerProgressBar, "APowerProgressBar");
+            APowerProgressBar.Maximum = 1000;
+            APowerProgressBar.Name = "APowerProgressBar";
+            APowerProgressBar.Step = 1;
             // 
             // fanBPowerTextBox
             // 
@@ -217,10 +235,10 @@
             fanBPowerTextBox.Name = "fanBPowerTextBox";
             fanBPowerTextBox.ReadOnly = true;
             // 
-            // fanBPowerLabel
+            // fanBLabel
             // 
-            resources.ApplyResources(fanBPowerLabel, "fanBPowerLabel");
-            fanBPowerLabel.Name = "fanBPowerLabel";
+            resources.ApplyResources(fanBLabel, "fanBLabel");
+            fanBLabel.Name = "fanBLabel";
             // 
             // fanAPowerTextBox
             // 
@@ -228,10 +246,10 @@
             fanAPowerTextBox.Name = "fanAPowerTextBox";
             fanAPowerTextBox.ReadOnly = true;
             // 
-            // fanAPowerLabel
+            // fanALabel
             // 
-            resources.ApplyResources(fanAPowerLabel, "fanAPowerLabel");
-            fanAPowerLabel.Name = "fanAPowerLabel";
+            resources.ApplyResources(fanALabel, "fanALabel");
+            fanALabel.Name = "fanALabel";
             // 
             // usbLabel
             // 
@@ -309,12 +327,14 @@
         private TextBox rotationTextBox;
         private TextBox speedTextBox;
         private Label rotationLabel;
-        private Label fanAPowerLabel;
+        private Label fanALabel;
         private TextBox fanAPowerTextBox;
         private TextBox fanBPowerTextBox;
-        private Label fanBPowerLabel;
+        private Label fanBLabel;
         private ToolStripMenuItem applicationToolStripMenuItem;
         private ToolStripMenuItem backgroundToolStripMenuItem;
         private ToolStripMenuItem closeApplicationToolStripMenuItem;
+        private ProgressBar BPowerProgressBar;
+        private ProgressBar APowerProgressBar;
     }
 }

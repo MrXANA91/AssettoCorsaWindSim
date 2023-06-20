@@ -138,6 +138,9 @@
   <data name="applicationToolStripMenuItem.Text" xml:space="preserve">
     <value>Application</value>
   </data>
+  <data name="settingsToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="settingsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 20</value>
   </data>
@@ -391,17 +394,68 @@
   <data name="&gt;&gt;acGroupBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="BPowerProgressBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BPowerProgressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 183</value>
+  </data>
+  <data name="BPowerProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="BPowerProgressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;BPowerProgressBar.Name" xml:space="preserve">
+    <value>BPowerProgressBar</value>
+  </data>
+  <data name="&gt;&gt;BPowerProgressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BPowerProgressBar.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;BPowerProgressBar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="APowerProgressBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 183</value>
+  </data>
+  <data name="APowerProgressBar.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="APowerProgressBar.RightToLeftLayout" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="APowerProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="APowerProgressBar.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;APowerProgressBar.Name" xml:space="preserve">
+    <value>APowerProgressBar</value>
+  </data>
+  <data name="&gt;&gt;APowerProgressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;APowerProgressBar.Parent" xml:space="preserve">
+    <value>hardwareGroupBox</value>
+  </data>
+  <data name="&gt;&gt;APowerProgressBar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="fanBPowerTextBox.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="fanBPowerTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 154</value>
+    <value>170, 155</value>
   </data>
   <data name="fanBPowerTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="fanBPowerTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 23</value>
+    <value>54, 23</value>
   </data>
   <data name="fanBPowerTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -422,46 +476,46 @@
     <value>hardwareGroupBox</value>
   </data>
   <data name="&gt;&gt;fanBPowerTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="fanBPowerLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="fanBPowerLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 156</value>
-  </data>
-  <data name="fanBPowerLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 15</value>
-  </data>
-  <data name="fanBPowerLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="fanBPowerLabel.Text" xml:space="preserve">
-    <value>Fan B Power :</value>
+  <data name="fanBLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;fanBPowerLabel.Name" xml:space="preserve">
-    <value>fanBPowerLabel</value>
+  <data name="fanBLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 132</value>
   </data>
-  <data name="&gt;&gt;fanBPowerLabel.Type" xml:space="preserve">
+  <data name="fanBLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 15</value>
+  </data>
+  <data name="fanBLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="fanBLabel.Text" xml:space="preserve">
+    <value>Fan B : OFF</value>
+  </data>
+  <data name="&gt;&gt;fanBLabel.Name" xml:space="preserve">
+    <value>fanBLabel</value>
+  </data>
+  <data name="&gt;&gt;fanBLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;fanBPowerLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;fanBLabel.Parent" xml:space="preserve">
     <value>hardwareGroupBox</value>
   </data>
-  <data name="&gt;&gt;fanBPowerLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;fanBLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="fanAPowerTextBox.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="fanAPowerTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 129</value>
+    <value>82, 155</value>
   </data>
   <data name="fanAPowerTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
   <data name="fanAPowerTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 23</value>
+    <value>54, 23</value>
   </data>
   <data name="fanAPowerTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -482,34 +536,34 @@
     <value>hardwareGroupBox</value>
   </data>
   <data name="&gt;&gt;fanAPowerTextBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
-  <data name="fanAPowerLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="fanALabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="fanAPowerLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 131</value>
+  <data name="fanALabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 132</value>
   </data>
-  <data name="fanAPowerLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 15</value>
+  <data name="fanALabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
   </data>
-  <data name="fanAPowerLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="fanALabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="fanAPowerLabel.Text" xml:space="preserve">
-    <value>Fan A Power :</value>
+  <data name="fanALabel.Text" xml:space="preserve">
+    <value>Fan A : OFF</value>
   </data>
-  <data name="&gt;&gt;fanAPowerLabel.Name" xml:space="preserve">
-    <value>fanAPowerLabel</value>
+  <data name="&gt;&gt;fanALabel.Name" xml:space="preserve">
+    <value>fanALabel</value>
   </data>
-  <data name="&gt;&gt;fanAPowerLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;fanALabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;fanAPowerLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;fanALabel.Parent" xml:space="preserve">
     <value>hardwareGroupBox</value>
   </data>
-  <data name="&gt;&gt;fanAPowerLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;fanALabel.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="usbLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -539,7 +593,7 @@
     <value>hardwareGroupBox</value>
   </data>
   <data name="&gt;&gt;usbLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="usbPictureBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 20</value>
@@ -566,7 +620,7 @@
     <value>hardwareGroupBox</value>
   </data>
   <data name="&gt;&gt;usbPictureBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="hardwareGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 4</value>

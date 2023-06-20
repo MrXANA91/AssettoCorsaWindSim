@@ -7,13 +7,7 @@ namespace AssettoCorsaWindSim;
 
 public class AssettoCorsaWindSimController : IDisposable
 {
-    public delegate void AssettoCorsaConnectionChangedHandler(object sender, GameStatusEventArgs e);
-    public delegate void AssettoCorsaDataReceivedHandler(object sender, AssettoCorsaDataEventArgs e);
-
-    public delegate void HardwareConnectionChangedHandler(object sender, HardwareConnectionEventArgs e);
-    public delegate void HardwareDataSentHandler(object sender, HardwareDataEventArgs e);
-
-    private List<FanParameters> fansParams;
+    #region "Hardware"
 
     private ArduinoSerialCom fansController;
     private bool fansControllerConnected;
@@ -24,16 +18,19 @@ public class AssettoCorsaWindSimController : IDisposable
         get { return fansControllerConnected; }
         private set { fansControllerConnected = value; }
     }
-    
-    private static uint _debug_verbose = ArduinoSerialCom.VERBOSE_IMPORTANT;
-    public static uint DEBUG_VERBOSE {
-        get {
-            return _debug_verbose;
-        }
-        set {
-            ArduinoSerialCom.DEBUG_VERBOSE = value;
-            _debug_verbose = value;
-        }
+
+    private Timer fansControllerTimer;
+    private bool updateFansPower;
+
+    #endregion
+
+    #region "AssettoCorsa - assettocorsamemoryshared related"
+
+    private AssettoCorsa ac;
+
+    public AC_STATUS gameStatus
+    {
+        get; private set;
     }
 
     public double PhysicsInterval {
@@ -54,17 +51,37 @@ public class AssettoCorsaWindSimController : IDisposable
         }
     }
 
-    private Timer fansControllerTimer;
+    #endregion
 
-    private AssettoCorsa ac;
-    private bool updateFansPower;
+    #region "AssettoCorsaWindSim - specifics"
 
-    public AC_STATUS gameStatus
+    private List<FanParameters> fansParams;
+
+    #endregion
+
+    #region "Misc"
+    private static uint _debug_verbose = ArduinoSerialCom.VERBOSE_IMPORTANT;
+    public static uint DEBUG_VERBOSE
     {
-        get; private set;
+        get
+        {
+            return _debug_verbose;
+        }
+        set
+        {
+            ArduinoSerialCom.DEBUG_VERBOSE = value;
+            _debug_verbose = value;
+        }
     }
+    #endregion
 
-    #region "EVENTS MANAGER"
+    #region "Events handling"
+
+    public delegate void AssettoCorsaConnectionChangedHandler(object sender, GameStatusEventArgs e);
+    public delegate void AssettoCorsaDataReceivedHandler(object sender, AssettoCorsaDataEventArgs e);
+
+    public delegate void HardwareConnectionChangedHandler(object sender, HardwareConnectionEventArgs e);
+    public delegate void HardwareDataSentHandler(object sender, HardwareDataEventArgs e);
 
     public event AssettoCorsaConnectionChangedHandler? AssettoCorsaConnectionChanged;
 
@@ -113,8 +130,8 @@ public class AssettoCorsaWindSimController : IDisposable
 
         fansParams = new List<FanParameters>
         {
-            new FanParameters(30f),
-            new FanParameters(-30f)
+            new FanParameters(30f, 250f, 0.5f, FanParameters.POWER_COMPUTATION.EXAGERATE_VECTOR_PROJECTION),
+            new FanParameters(-30f, 250f, 0.5f, FanParameters.POWER_COMPUTATION.EXAGERATE_VECTOR_PROJECTION)
         };
     }
 
@@ -235,10 +252,13 @@ public class AssettoCorsaWindSimController : IDisposable
     }
 
     private void fansController_activate() {
-        if (fansController.IsConnected) {
+        if (fansController.IsConnected)
+        {
+            OnHardwareDataSent(new HardwareDataEventArgs(true, fansParams[0].status.PowerValue, true, fansParams[1].status.PowerValue));
             try {
                 lock(fansController) {
                     fansController.SetFanAEnable(true);
+                    fansParams[0].status.UpdatePowerEnable(true);
                 }
             } catch (Exception ex) {
                 if (_debug_verbose>=0)  Console.WriteLine("Enabling Fan A exception : "+ex.ToString());
@@ -246,6 +266,7 @@ public class AssettoCorsaWindSimController : IDisposable
             try {
                 lock(fansController) {
                     fansController.SetFanBEnable(true);
+                    fansParams[1].status.UpdatePowerEnable(true);
                 }
             } catch (Exception ex) {
                 if (_debug_verbose>=0)  Console.WriteLine("Enabling Fan B exception : "+ex.ToString());
@@ -254,10 +275,14 @@ public class AssettoCorsaWindSimController : IDisposable
     }
 
     private void fansController_deactivate() {
-        if (fansController.IsConnected) {
+        if (fansController.IsConnected)
+        {
+            OnHardwareDataSent(new HardwareDataEventArgs(false, fansParams[0].status.PowerValue, false, fansParams[1].status.PowerValue));
+
             try {
                 lock(fansController) {
                     fansController.SetFanAEnable(false);
+                    fansParams[0].status.UpdatePowerEnable(false);
                 }
             } catch (Exception ex) {
                 if (_debug_verbose>=0)  Console.WriteLine("Stopping Fan A exception : "+ex.ToString());
@@ -265,6 +290,7 @@ public class AssettoCorsaWindSimController : IDisposable
             try {
                 lock(fansController) {
                     fansController.SetFanBEnable(false);
+                    fansParams[1].status.UpdatePowerEnable(false);
                 }
             } catch (Exception ex) {
                 if (_debug_verbose>=0)  Console.WriteLine("Stopping Fan B exception : "+ex.ToString());
@@ -277,14 +303,14 @@ public class AssettoCorsaWindSimController : IDisposable
         uint fanB_power = fansParams[1].CalculatePower(speedKmh, localAngularVelocityY);
 
         if (fansController.IsConnected && updateFansPower) {
-            OnHardwareDataSent(new HardwareDataEventArgs(fanA_power, fanB_power));
+            OnHardwareDataSent(new HardwareDataEventArgs(fansParams[0].status.PowerEnabled, fanA_power, fansParams[1].status.PowerEnabled, fanB_power));
 
             String fanAString = "";
             String fanBString = "";
-            if (fansParams[0].overload) fanAString += "+";
-            if (fansParams[0].underload) fanAString += "-";
-            if (fansParams[1].overload) fanBString += "+";
-            if (fansParams[1].underload) fanBString += "-";
+            if (fansParams[0].status.Overload) fanAString += "+";
+            if (fansParams[0].status.Underload) fanAString += "-";
+            if (fansParams[1].status.Overload) fanBString += "+";
+            if (fansParams[1].status.Underload) fanBString += "-";
             if (_debug_verbose>=2)  Console.WriteLine("| {0, -3} - {1, 3} | ({2,-2},{3,2})", fanA_power, fanB_power, fanAString, fanBString);
             try {
                 lock(fansController) {

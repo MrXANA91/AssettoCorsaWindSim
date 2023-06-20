@@ -17,12 +17,7 @@ public class FanParameters
     public float gamma;
     public POWER_COMPUTATION powerCompFunc;
 
-    public Boolean overload {
-        get; private set;
-    }
-    public Boolean underload {
-        get; private set;
-    }
+    public FanStatus status;
 
     public FanParameters(float _angle = DEFAULT_ANGLE, float _maxSpeed = DEFAULT_MAXSPEED, float _gamma = DEFAULT_GAMMA, POWER_COMPUTATION _powerCompFunc = DEFAULT_COMPUTATION) {
         angle = _angle;
@@ -30,8 +25,7 @@ public class FanParameters
         gamma = _gamma;
         powerCompFunc = _powerCompFunc;
 
-        overload = false;
-        underload = false;
+        status = new FanStatus();
     }
 
     public FanParameters() {
@@ -40,8 +34,7 @@ public class FanParameters
         gamma = DEFAULT_GAMMA;
         powerCompFunc = DEFAULT_COMPUTATION;
 
-        overload = false;
-        underload = false;
+        status = new FanStatus();
     }
 
     public uint CalculatePower(float speedKmh, float angularVelocity) {
@@ -59,12 +52,13 @@ public class FanParameters
                 break;
         }
 
-        overload = powerValue > 1f;
-        underload = powerValue < 0f;
-        if (overload) powerValue = 1f;
-        if (underload) powerValue = 0f;
+        status.UpdateFlowFlags(powerValue > 1f, powerValue < 0f);
+        if (status.Overload) powerValue = 1f;
+        if (status.Underload) powerValue = 0f;
 
-        return Convert.ToUInt32(MathF.Pow(powerValue, gamma)*255f);
+        status.UpdatePowerValue(Convert.ToUInt32(MathF.Pow(powerValue, gamma) * 255f));
+
+        return status.PowerValue;
     }
 
     private float ComputeSpeedOnly(float speedKmh, float angularVelocity) {
@@ -77,5 +71,37 @@ public class FanParameters
         float targetAngleRad = targetAngle / 180.0f * MathF.PI;
 
         return baseValue * MathF.Cos(targetAngleRad*(angleRad - angularVelocity)/angleRad);
+    }
+}
+
+public class FanStatus
+{
+    public bool PowerEnabled { get; private set; } = false;
+
+    public uint PowerValue { get; private set; } = 0;
+
+    public bool Overload { get; private set; } = false;
+
+    public bool Underload { get; private set; } = false;
+
+    public FanStatus()
+    {
+
+    }
+
+    internal void UpdatePowerEnable(bool powerEnabled)
+    {
+        PowerEnabled = powerEnabled;
+    }
+
+    internal void UpdatePowerValue(uint powerValue)
+    {
+        PowerValue = powerValue;
+    }
+
+    internal void UpdateFlowFlags(bool overload, bool underload)
+    {
+        Overload = overload;
+        Underload = underload;
     }
 }
