@@ -1,3 +1,5 @@
+using assettocorsasharedmemory;
+
 namespace AssettoCorsaWindSim;
 
 public class FanParameters
@@ -6,6 +8,13 @@ public class FanParameters
         SPEED_ONLY = 0,
         STRICT_VECTOR_PROJECTION = 1,
         EXAGERATE_VECTOR_PROJECTION = 2
+    };
+
+    public static readonly Dictionary<POWER_COMPUTATION, string> PowerComputationNameLookup = new Dictionary<POWER_COMPUTATION, string>
+    {
+        { POWER_COMPUTATION.SPEED_ONLY, "Speed only" },
+        { POWER_COMPUTATION.STRICT_VECTOR_PROJECTION, "Strict vector projection" },
+        { POWER_COMPUTATION.EXAGERATE_VECTOR_PROJECTION, "Exagerate vector projection" }
     };
 
     public const float DEFAULT_ANGLE = 0f;

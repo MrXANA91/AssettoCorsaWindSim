@@ -33,6 +33,7 @@ namespace ACWSControlPanel
         const int ICON_WAITING_UNKNOWN = 5;
 
         private AssettoCorsaWindSimController acws;
+        IList<FanParameters> list = new List<FanParameters>();
 
         private Boolean allowClose = false;
 
@@ -40,11 +41,19 @@ namespace ACWSControlPanel
         {
             InitializeComponent();
 
+            UpdateCompFuncComboxBoxes();
+
             acws = new AssettoCorsaWindSimController();
 
             UpdateNotifyIcon(DEVICE_NOT_CONNECTED, false);
             UpdateNotifyIconImage();
             UpdateHardwareStatus(false);
+
+            list = acws.GetFanParametersList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                UpdateFanParameters(i, list[i]);
+            }
         }
 
         #region "GUI callback methods"
@@ -112,6 +121,52 @@ namespace ACWSControlPanel
         {
             allowClose = false;
             this.Close();
+        }
+
+        private void fanAMaxSpeedNum_ValueChanged(object sender, EventArgs e)
+        {
+            list[0].maxSpeed = (float)fanAMaxSpeedNum.Value;
+        }
+
+        private void fanAGammaNum_ValueChanged(object sender, EventArgs e)
+        {
+            list[0].gamma = (float)fanAGammaNum.Value;
+        }
+
+        private void fanAAngleTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            float angle = ((float)fanAAngleTrackBar.Value / 10f);
+            list[0].angle = angle;
+            
+            fanAAngleLabel.Text = angle.ToString("0.0 °");
+        }
+
+        private void fanACompFuncComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            list[0].powerCompFunc = (FanParameters.POWER_COMPUTATION)fanACompFuncComboBox.SelectedIndex;
+        }
+
+        private void fanBMaxSpeedNum_ValueChanged(object sender, EventArgs e)
+        {
+            list[1].maxSpeed = (float)fanBMaxSpeedNum.Value;
+        }
+
+        private void fanBGammaNum_ValueChanged(object sender, EventArgs e)
+        {
+            list[1].gamma = (float)fanBGammaNum.Value;
+        }
+
+        private void fanBAngleTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            float angle = ((float)fanBAngleTrackBar.Value / 10f);
+            list[1].angle = angle;
+
+            fanBAngleLabel.Text = angle.ToString("0.0 °");
+        }
+
+        private void fanBCompFuncComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            list[1].powerCompFunc = (FanParameters.POWER_COMPUTATION)fanBCompFuncComboBox.SelectedIndex;
         }
 
         #endregion
@@ -369,6 +424,47 @@ namespace ACWSControlPanel
                     break;
                 case ICON_WAITING_UNKNOWN:
                     acPictureBox.Image = Resources.icons8_assetto_corsa_competizione_100_unknown;
+                    break;
+            }
+        }
+
+        private void UpdateCompFuncComboxBoxes()
+        {
+            fanACompFuncComboBox.Items.Clear();
+            fanBCompFuncComboBox.Items.Clear();
+
+            foreach (var entry in FanParameters.PowerComputationNameLookup)
+            {
+                fanACompFuncComboBox.Items.Add(entry.Value);
+                fanBCompFuncComboBox.Items.Add(entry.Value);
+            }
+        }
+
+        private void UpdateFanParameters(int index, FanParameters fan)
+        {
+            switch (index)
+            {
+                default:
+                    break;
+                case 0:
+                    fanAMaxSpeedNum.Value = (decimal)fan.maxSpeed;
+
+                    fanAGammaNum.Value = (decimal)fan.gamma;
+
+                    fanAAngleLabel.Text = fan.angle.ToString("0.0 °");
+                    fanAAngleTrackBar.Value = (int)(fan.angle * 10);
+
+                    fanACompFuncComboBox.SelectedIndex = (int)fan.powerCompFunc;
+                    break;
+                case 1:
+                    fanBMaxSpeedNum.Value = (decimal)fan.maxSpeed;
+
+                    fanBGammaNum.Value = (decimal)fan.gamma;
+
+                    fanBAngleLabel.Text = fan.angle.ToString("0.0 °");
+                    fanBAngleTrackBar.Value = (int)(fan.angle * 10);
+
+                    fanBCompFuncComboBox.SelectedIndex = (int)fan.powerCompFunc;
                     break;
             }
         }

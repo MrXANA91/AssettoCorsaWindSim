@@ -60,7 +60,25 @@
             usbLabel = new Label();
             usbPictureBox = new PictureBox();
             fan1AdvancedTabPage = new TabPage();
+            fanACompFuncComboBox = new ComboBox();
+            fanAAngleLabel = new Label();
+            fanAAngleTrackBar = new TrackBar();
+            label2 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            fanAGammaNum = new NumericUpDown();
+            label1 = new Label();
+            fanAMaxSpeedNum = new NumericUpDown();
             fan2AdvancedTabPage = new TabPage();
+            fanBCompFuncComboBox = new ComboBox();
+            fanBAngleLabel = new Label();
+            fanBAngleTrackBar = new TrackBar();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            fanBGammaNum = new NumericUpDown();
+            label9 = new Label();
+            fanBMaxSpeedNum = new NumericUpDown();
             notifyContextMenu.SuspendLayout();
             menuStrip.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -69,6 +87,14 @@
             ((System.ComponentModel.ISupportInitialize)acPictureBox).BeginInit();
             hardwareGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)usbPictureBox).BeginInit();
+            fan1AdvancedTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)fanAAngleTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fanAGammaNum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fanAMaxSpeedNum).BeginInit();
+            fan2AdvancedTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)fanBAngleTrackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fanBGammaNum).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fanBMaxSpeedNum).BeginInit();
             SuspendLayout();
             // 
             // notifyIcon
@@ -265,15 +291,151 @@
             // 
             // fan1AdvancedTabPage
             // 
+            fan1AdvancedTabPage.Controls.Add(fanACompFuncComboBox);
+            fan1AdvancedTabPage.Controls.Add(fanAAngleLabel);
+            fan1AdvancedTabPage.Controls.Add(fanAAngleTrackBar);
+            fan1AdvancedTabPage.Controls.Add(label2);
+            fan1AdvancedTabPage.Controls.Add(label4);
+            fan1AdvancedTabPage.Controls.Add(label3);
+            fan1AdvancedTabPage.Controls.Add(fanAGammaNum);
+            fan1AdvancedTabPage.Controls.Add(label1);
+            fan1AdvancedTabPage.Controls.Add(fanAMaxSpeedNum);
             resources.ApplyResources(fan1AdvancedTabPage, "fan1AdvancedTabPage");
             fan1AdvancedTabPage.Name = "fan1AdvancedTabPage";
             fan1AdvancedTabPage.UseVisualStyleBackColor = true;
             // 
+            // fanACompFuncComboBox
+            // 
+            fanACompFuncComboBox.FormattingEnabled = true;
+            resources.ApplyResources(fanACompFuncComboBox, "fanACompFuncComboBox");
+            fanACompFuncComboBox.Name = "fanACompFuncComboBox";
+            fanACompFuncComboBox.SelectedIndexChanged += fanACompFuncComboBox_SelectedIndexChanged;
+            // 
+            // fanAAngleLabel
+            // 
+            resources.ApplyResources(fanAAngleLabel, "fanAAngleLabel");
+            fanAAngleLabel.Name = "fanAAngleLabel";
+            // 
+            // fanAAngleTrackBar
+            // 
+            resources.ApplyResources(fanAAngleTrackBar, "fanAAngleTrackBar");
+            fanAAngleTrackBar.Maximum = 900;
+            fanAAngleTrackBar.Minimum = -900;
+            fanAAngleTrackBar.Name = "fanAAngleTrackBar";
+            fanAAngleTrackBar.ValueChanged += fanAAngleTrackBar_ValueChanged;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            // 
+            // fanAGammaNum
+            // 
+            fanAGammaNum.DecimalPlaces = 3;
+            fanAGammaNum.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            resources.ApplyResources(fanAGammaNum, "fanAGammaNum");
+            fanAGammaNum.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
+            fanAGammaNum.Name = "fanAGammaNum";
+            fanAGammaNum.Value = new decimal(new int[] { 5, 0, 0, 65536 });
+            fanAGammaNum.ValueChanged += fanAGammaNum_ValueChanged;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            // 
+            // fanAMaxSpeedNum
+            // 
+            resources.ApplyResources(fanAMaxSpeedNum, "fanAMaxSpeedNum");
+            fanAMaxSpeedNum.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
+            fanAMaxSpeedNum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            fanAMaxSpeedNum.Name = "fanAMaxSpeedNum";
+            fanAMaxSpeedNum.Value = new decimal(new int[] { 250, 0, 0, 0 });
+            fanAMaxSpeedNum.ValueChanged += fanAMaxSpeedNum_ValueChanged;
+            // 
             // fan2AdvancedTabPage
             // 
+            fan2AdvancedTabPage.Controls.Add(fanBCompFuncComboBox);
+            fan2AdvancedTabPage.Controls.Add(fanBAngleLabel);
+            fan2AdvancedTabPage.Controls.Add(fanBAngleTrackBar);
+            fan2AdvancedTabPage.Controls.Add(label6);
+            fan2AdvancedTabPage.Controls.Add(label7);
+            fan2AdvancedTabPage.Controls.Add(label8);
+            fan2AdvancedTabPage.Controls.Add(fanBGammaNum);
+            fan2AdvancedTabPage.Controls.Add(label9);
+            fan2AdvancedTabPage.Controls.Add(fanBMaxSpeedNum);
             resources.ApplyResources(fan2AdvancedTabPage, "fan2AdvancedTabPage");
             fan2AdvancedTabPage.Name = "fan2AdvancedTabPage";
             fan2AdvancedTabPage.UseVisualStyleBackColor = true;
+            // 
+            // fanBCompFuncComboBox
+            // 
+            fanBCompFuncComboBox.FormattingEnabled = true;
+            resources.ApplyResources(fanBCompFuncComboBox, "fanBCompFuncComboBox");
+            fanBCompFuncComboBox.Name = "fanBCompFuncComboBox";
+            fanBCompFuncComboBox.SelectedIndexChanged += fanBCompFuncComboBox_SelectedIndexChanged;
+            // 
+            // fanBAngleLabel
+            // 
+            resources.ApplyResources(fanBAngleLabel, "fanBAngleLabel");
+            fanBAngleLabel.Name = "fanBAngleLabel";
+            // 
+            // fanBAngleTrackBar
+            // 
+            resources.ApplyResources(fanBAngleTrackBar, "fanBAngleTrackBar");
+            fanBAngleTrackBar.Maximum = 900;
+            fanBAngleTrackBar.Minimum = -900;
+            fanBAngleTrackBar.Name = "fanBAngleTrackBar";
+            fanBAngleTrackBar.ValueChanged += fanBAngleTrackBar_ValueChanged;
+            // 
+            // label6
+            // 
+            resources.ApplyResources(label6, "label6");
+            label6.Name = "label6";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            // 
+            // fanBGammaNum
+            // 
+            fanBGammaNum.DecimalPlaces = 3;
+            fanBGammaNum.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            resources.ApplyResources(fanBGammaNum, "fanBGammaNum");
+            fanBGammaNum.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
+            fanBGammaNum.Name = "fanBGammaNum";
+            fanBGammaNum.Value = new decimal(new int[] { 5, 0, 0, 65536 });
+            fanBGammaNum.ValueChanged += fanBGammaNum_ValueChanged;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
+            // 
+            // fanBMaxSpeedNum
+            // 
+            resources.ApplyResources(fanBMaxSpeedNum, "fanBMaxSpeedNum");
+            fanBMaxSpeedNum.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
+            fanBMaxSpeedNum.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            fanBMaxSpeedNum.Name = "fanBMaxSpeedNum";
+            fanBMaxSpeedNum.Value = new decimal(new int[] { 250, 0, 0, 0 });
+            fanBMaxSpeedNum.ValueChanged += fanBMaxSpeedNum_ValueChanged;
             // 
             // MainForm
             // 
@@ -299,6 +461,16 @@
             hardwareGroupBox.ResumeLayout(false);
             hardwareGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)usbPictureBox).EndInit();
+            fan1AdvancedTabPage.ResumeLayout(false);
+            fan1AdvancedTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)fanAAngleTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fanAGammaNum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fanAMaxSpeedNum).EndInit();
+            fan2AdvancedTabPage.ResumeLayout(false);
+            fan2AdvancedTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)fanBAngleTrackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fanBGammaNum).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fanBMaxSpeedNum).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -336,5 +508,23 @@
         private ToolStripMenuItem closeApplicationToolStripMenuItem;
         private ProgressBar BPowerProgressBar;
         private ProgressBar APowerProgressBar;
+        private TrackBar fanAAngleTrackBar;
+        private Label label2;
+        private Label label1;
+        private NumericUpDown fanAMaxSpeedNum;
+        private Label fanAAngleLabel;
+        private Label label3;
+        private NumericUpDown fanAGammaNum;
+        private ComboBox fanACompFuncComboBox;
+        private Label label4;
+        private ComboBox fanBCompFuncComboBox;
+        private Label fanBAngleLabel;
+        private TrackBar fanBAngleTrackBar;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private NumericUpDown fanBGammaNum;
+        private Label label9;
+        private NumericUpDown fanBMaxSpeedNum;
     }
 }
