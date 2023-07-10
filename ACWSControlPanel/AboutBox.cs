@@ -20,6 +20,9 @@ namespace ACWSControlPanel
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
+
+            this.textBoxDescription.Text += "\r\n\r\n";
+            this.textBoxDescription.Text += "USB & AssettoCorsa icons from : https://icons8.com/";
         }
 
         #region Accesseurs d'attribut de l'assembly
