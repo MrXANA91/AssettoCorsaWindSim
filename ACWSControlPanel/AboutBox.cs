@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -19,10 +20,10 @@ namespace ACWSControlPanel
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            this.descriptionRichTextBox.Text = AssemblyDescription;
 
-            this.textBoxDescription.Text += "\r\n\r\n";
-            this.textBoxDescription.Text += "USB & AssettoCorsa icons from : https://icons8.com/";
+            this.descriptionRichTextBox.Text += "\r\n\r\n";
+            this.descriptionRichTextBox.Text += "USB & AssettoCorsa icons from : https://icons8.com/";
         }
 
         #region Accesseurs d'attribut de l'assembly
@@ -113,6 +114,12 @@ namespace ACWSControlPanel
         private void okButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void descriptionRichTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            if (e.LinkText == null) return;
+            Process.Start("explorer.exe", e.LinkText);
         }
     }
 }

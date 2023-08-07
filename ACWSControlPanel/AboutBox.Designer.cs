@@ -34,8 +34,8 @@
             labelVersion = new Label();
             labelCopyright = new Label();
             labelCompanyName = new Label();
-            textBoxDescription = new TextBox();
             okButton = new Button();
+            descriptionRichTextBox = new RichTextBox();
             tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoPictureBox).BeginInit();
             SuspendLayout();
@@ -50,8 +50,8 @@
             tableLayoutPanel.Controls.Add(labelVersion, 1, 1);
             tableLayoutPanel.Controls.Add(labelCopyright, 1, 2);
             tableLayoutPanel.Controls.Add(labelCompanyName, 1, 3);
-            tableLayoutPanel.Controls.Add(textBoxDescription, 1, 4);
             tableLayoutPanel.Controls.Add(okButton, 1, 5);
+            tableLayoutPanel.Controls.Add(descriptionRichTextBox, 1, 4);
             tableLayoutPanel.Dock = DockStyle.Fill;
             tableLayoutPanel.Location = new Point(10, 10);
             tableLayoutPanel.Margin = new Padding(4);
@@ -127,20 +127,6 @@
             labelCompanyName.Text = "Company Name";
             labelCompanyName.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // textBoxDescription
-            // 
-            textBoxDescription.Dock = DockStyle.Fill;
-            textBoxDescription.Location = new Point(168, 124);
-            textBoxDescription.Margin = new Padding(7, 4, 4, 4);
-            textBoxDescription.Multiline = true;
-            textBoxDescription.Name = "textBoxDescription";
-            textBoxDescription.ReadOnly = true;
-            textBoxDescription.ScrollBars = ScrollBars.Both;
-            textBoxDescription.Size = new Size(316, 145);
-            textBoxDescription.TabIndex = 23;
-            textBoxDescription.TabStop = false;
-            textBoxDescription.Text = "Description";
-            // 
             // okButton
             // 
             okButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -152,6 +138,16 @@
             okButton.TabIndex = 24;
             okButton.Text = "&OK";
             okButton.Click += okButton_Click;
+            // 
+            // descriptionRichTextBox
+            // 
+            descriptionRichTextBox.Location = new Point(164, 123);
+            descriptionRichTextBox.Name = "descriptionRichTextBox";
+            descriptionRichTextBox.ReadOnly = true;
+            descriptionRichTextBox.Size = new Size(320, 147);
+            descriptionRichTextBox.TabIndex = 25;
+            descriptionRichTextBox.Text = "Description";
+            descriptionRichTextBox.LinkClicked += descriptionRichTextBox_LinkClicked;
             // 
             // AboutBox
             // 
@@ -171,7 +167,6 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "About";
             tableLayoutPanel.ResumeLayout(false);
-            tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logoPictureBox).EndInit();
             ResumeLayout(false);
         }
@@ -184,7 +179,7 @@
         private Label labelVersion;
         private Label labelCopyright;
         private Label labelCompanyName;
-        private TextBox textBoxDescription;
         private Button okButton;
+        private RichTextBox descriptionRichTextBox;
     }
 }
