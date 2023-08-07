@@ -35,10 +35,10 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             statusStrip = new StatusStrip();
             menuStrip = new MenuStrip();
-            applicationToolStripMenuItem = new ToolStripMenuItem();
+            fileToolStripMenuItem = new ToolStripMenuItem();
             backgroundToolStripMenuItem = new ToolStripMenuItem();
             closeApplicationToolStripMenuItem = new ToolStripMenuItem();
-            settingsToolStripMenuItem = new ToolStripMenuItem();
+            optionsToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             tabControl1 = new TabControl();
@@ -79,6 +79,7 @@
             fanBGammaNum = new NumericUpDown();
             label9 = new Label();
             fanBMaxSpeedNum = new NumericUpDown();
+            settingsToolStripMenuItem = new ToolStripMenuItem();
             notifyContextMenu.SuspendLayout();
             menuStrip.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -125,15 +126,15 @@
             // menuStrip
             // 
             menuStrip.ImageScalingSize = new Size(20, 20);
-            menuStrip.Items.AddRange(new ToolStripItem[] { applicationToolStripMenuItem, settingsToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, optionsToolStripMenuItem, helpToolStripMenuItem });
             resources.ApplyResources(menuStrip, "menuStrip");
             menuStrip.Name = "menuStrip";
             // 
-            // applicationToolStripMenuItem
+            // fileToolStripMenuItem
             // 
-            applicationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backgroundToolStripMenuItem, closeApplicationToolStripMenuItem });
-            applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
-            resources.ApplyResources(applicationToolStripMenuItem, "applicationToolStripMenuItem");
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backgroundToolStripMenuItem, closeApplicationToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // backgroundToolStripMenuItem
             // 
@@ -147,10 +148,11 @@
             resources.ApplyResources(closeApplicationToolStripMenuItem, "closeApplicationToolStripMenuItem");
             closeApplicationToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
-            // settingsToolStripMenuItem
+            // optionsToolStripMenuItem
             // 
-            resources.ApplyResources(settingsToolStripMenuItem, "settingsToolStripMenuItem");
-            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            optionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { settingsToolStripMenuItem });
+            resources.ApplyResources(optionsToolStripMenuItem, "optionsToolStripMenuItem");
+            optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             // 
             // helpToolStripMenuItem
             // 
@@ -437,6 +439,11 @@
             fanBMaxSpeedNum.Value = new decimal(new int[] { 250, 0, 0, 0 });
             fanBMaxSpeedNum.ValueChanged += fanBMaxSpeedNum_ValueChanged;
             // 
+            // settingsToolStripMenuItem
+            // 
+            resources.ApplyResources(settingsToolStripMenuItem, "settingsToolStripMenuItem");
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -482,7 +489,7 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private StatusStrip statusStrip;
         private MenuStrip menuStrip;
-        private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem optionsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private TabControl tabControl1;
@@ -503,7 +510,7 @@
         private TextBox fanAPowerTextBox;
         private TextBox fanBPowerTextBox;
         private Label fanBLabel;
-        private ToolStripMenuItem applicationToolStripMenuItem;
+        private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem backgroundToolStripMenuItem;
         private ToolStripMenuItem closeApplicationToolStripMenuItem;
         private ProgressBar BPowerProgressBar;
@@ -526,5 +533,6 @@
         private NumericUpDown fanBGammaNum;
         private Label label9;
         private NumericUpDown fanBMaxSpeedNum;
+        private ToolStripMenuItem settingsToolStripMenuItem;
     }
 }

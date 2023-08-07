@@ -137,7 +137,7 @@ namespace ACWSControlPanel
         {
             float angle = ((float)fanAAngleTrackBar.Value / 10f);
             list[0].angle = angle;
-            
+
             fanAAngleLabel.Text = angle.ToString("0.0 °");
         }
 
